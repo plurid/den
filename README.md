@@ -4,6 +4,14 @@
 
 
 
+<p align="center">
+    <a href="https://github.com/plurid/den/blob/master/LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-blue.svg?colorB=492356&style=for-the-badge" alt="License">
+    </a>
+</p>
+
+
+
 # den
 
 plurid-oriented browser
