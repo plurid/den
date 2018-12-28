@@ -14,5 +14,11 @@
 
 # den
 
-plurid-oriented browser
+Plurid-powered web browser based on Electron/Chromium.
+
+
++ [Install](#install)
+
+
+## Install
 
