@@ -2,17 +2,19 @@
 
 
 + about
-+ den
-+ build
-    + machine
-    ...
 + app
     + src
         + assets
+        + core
+        + shell
         + lib
-        +
+        + pluriverse
     + test
     ...
++ build
+    + machine
+    ...
++ den
 ...
 
 
