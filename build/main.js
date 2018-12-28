@@ -1,4 +1,4 @@
-const { app, BrowserWindow, systemPreferences } = require('electron')
+const { app, BrowserWindow, BrowserView, systemPreferences } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -20,6 +20,16 @@ function createWindow () {
 
     // Open the DevTools.
     win.webContents.openDevTools()
+
+    let view = new BrowserView({
+        webPreferences: {
+            nodeIntegration: false
+        }
+    })
+    win.setBrowserView(view)
+    view.setBounds({ x: 0, y: 38, width: 1440, height: 860 })
+    view.webContents.loadURL('https://electronjs.org')
+
 
     // Emitted when the window is closed.
     win.on('closed', () => {
