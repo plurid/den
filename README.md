@@ -12,9 +12,11 @@
 
 
 
-# den
+<h1 align="center">
+    den
+</h1>
 
-Plurid-powered web browser based on Electron/Chromium.
+[Plurid](https://github.com/plurid/plurid)-powered web browser based on Electron/Chromium.
 
 
 + [Install](#install)
