@@ -1,13 +1,16 @@
 {
     "name": "den",
     "version": "0.1.0",
-    "description": "den",
+    "description": "Plurid-powered web browser based on Electron/Chromium.",
     "author": "Jan Cavel <mail@caveljan.com> (https://caveljan.com/)",
     "license": "MIT",
-    "main": "./den.385452e306d51d8139c0.js",
+    "homepage": "https://den.plurid.com",
     "repository": {
         "type": "git",
         "url": "https://github.com/plurid/den.git"
+    },
+    "bugs": {
+        "url": "https://github.com/plurid/den/issues"
     },
     "scripts": {
         "build": "webpack -p --env prod --progress --profile --colors",
@@ -63,6 +66,5 @@
         "url-loader": "^1.0.1",
         "webpack": "^4.16.4",
         "webpack-cli": "^3.1.0"
-    },
-    "dependencies": {}
+    }
 }
