@@ -51,7 +51,11 @@ html, body {
   height: 100%;
   width: 100%;
   -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d; }
+          transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 450.5px 0px;
+          transform-origin: 50% 450.5px 0px;
+  -webkit-transform: matrix3d(0.37927, 0.40311, 0.64511, 0, 0, 0.72084, -0.45043, 0, -0.76069, 0.20098, 0.32164, 0, -140, -70, 0, 1);
+          transform: matrix3d(0.37927, 0.40311, 0.64511, 0, 0, 0.72084, -0.45043, 0, -0.76069, 0.20098, 0.32164, 0, -140, -70, 0, 1); }
 
 .root {
   position: absolute;
@@ -67,14 +71,16 @@ html, body {
   padding: 40px;
   padding-top: 80px;
   position: absolute;
-  width: 100%; }
+  width: 100%;
+  background-color: #4a4c4f; }
 
 .branch {
-  position: absolute; }
+  position: absolute;
+  background-color: #303636; }
 
 #branch-a {
-  -webkit-transform: translateX(500px) translateY(500px) scale(0.6);
-          transform: translateX(500px) translateY(500px) scale(0.6); }
+  -webkit-transform: translateX(393px) translateY(54px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1);
+          transform: translateX(393px) translateY(54px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1); }
 
 webview {
   position: absolute;
