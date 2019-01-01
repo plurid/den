@@ -14,11 +14,11 @@
     },
     "scripts": {
         "build": "webpack -p --env prod --progress --profile --colors",
-        "cypress:open": "cypress open",
-        "cypress:run": "cypress run",
         "watch": "webpack --watch --env dev",
         "electron": "electron ./build/",
-        "test": "jest ./test/unit"
+        "cypress:open": "cypress open",
+        "cypress:run": "cypress run",
+        "test": "jest ./app/test/unit/"
     },
     "devDependencies": {
         "@babel/core": "^7.2.2",
