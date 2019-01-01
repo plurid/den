@@ -1,3 +1,9 @@
+*, *:after, *:before {
+  box-sizing: border-box;
+  -webkit-font-kerning: auto;
+          font-kerning: auto;
+  text-rendering: optimizeLegibility; }
+
 html, body {
   width: 100vw;
   height: 100vh;
@@ -19,31 +25,60 @@ html, body {
   height: 38px;
   background-color: #141414; }
 
-.dev {
-  margin-left: 100px;
-  margin-top: 50px; }
+.container {
+  position: absolute;
+  top: 38px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #252727 0%, #111212 100%); }
+
+.space {
+  display: block;
+  -webkit-transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+          transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-perspective-origin: center 300px;
+          perspective-origin: center 300px;
+  -webkit-font-smoothing: antialiased; }
+
+.roots {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d; }
+
+.root {
+  position: absolute;
+  width: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+          transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); }
+
+.sheet {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  padding: 40px;
+  padding-top: 80px;
+  position: absolute;
+  width: 100%; }
+
+.branch {
+  position: absolute; }
+
+#branch-a {
+  -webkit-transform: translateX(500px) translateY(500px) scale(0.6);
+          transform: translateX(500px) translateY(500px) scale(0.6); }
 
 webview {
   position: absolute;
   border: none;
   height: 1000px;
   width: 1000px; }
-
-#view-a {
-  -webkit-transform: rotateY(45deg);
-          transform: rotateY(45deg); }
-
-#view-b {
-  -webkit-transform: translateX(300px) rotateY(-35deg);
-          transform: translateX(300px) rotateY(-35deg); }
-
-.views {
-  position: absolute;
-  overflow: hidden;
-  top: 38px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  -webkit-perspective: 700px;
-          perspective: 700px; }
 
