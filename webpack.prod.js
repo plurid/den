@@ -1,16 +1,14 @@
-const appName = 'build';
+const buildFolder = 'build';
 
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const WorkboxPlugin = require('workbox-webpack-plugin');
 
 
 const cleanWebpack = new CleanWebpackPlugin(
-    [`./${appName}`]
+    [`./${buildFolder}`]
 );
 const copyWebpack = new CopyWebpackPlugin(
     [
@@ -20,23 +18,12 @@ const copyWebpack = new CopyWebpackPlugin(
     ],
     { ignore: ['.DS_Store'] }
 );
-// const htmlWebpack = new HtmlWebpackPlugin(
-//     {
-//         filename: 'index.html',
-//         template: './src/html/index.html'
-//     }
-// );
 const miniCssExtract = new MiniCssExtractPlugin(
     {
         filename: `den.css`
     }
 );
-// const workbox = new WorkboxPlugin.InjectManifest(
-//     {
-//         swSrc: './src/ts/source/core/service-worker/sw.js',
-//         swDest: 'sw.js'
-//     }
-// );
+
 
 
 const config = {
@@ -44,14 +31,12 @@ const config = {
     entry: './app.ts',
     output: {
         filename: `main.js`,
-        path: path.resolve(__dirname, `${appName}/`)
+        path: path.resolve(__dirname, `${buildFolder}/`)
     },
     plugins: [
         cleanWebpack,
         copyWebpack,
-        // htmlWebpack,
         miniCssExtract,
-        // workbox
     ],
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
@@ -76,11 +61,11 @@ const config = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: `url-loader?name=${appName}/assets/images/[name].[ext]`
+                loader: `url-loader?name=${buildFolder}/assets/images/[name].[ext]`
             },
             {
                 test: /\.(ttf|woff|woff2)$/i,
-                loader: `url-loader?name=${appName}/assets/fonts/[name].[ext]`
+                loader: `url-loader?name=${buildFolder}/assets/fonts/[name].[ext]`
             },
             {
                 test: /\.ts$/,

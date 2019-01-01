@@ -13,7 +13,7 @@
         "build": "webpack -p --env prod --progress --profile --colors",
         "cypress:open": "cypress open",
         "cypress:run": "cypress run",
-        "dev": "webpack-dev-server --env dev --hot --host 0.0.0.0 --port 9000",
+        "watch": "webpack --watch --env dev",
         "electron": "electron ./build/",
         "test": "jest ./test/unit"
     },

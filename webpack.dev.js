@@ -1,34 +1,29 @@
-const appName = 'den';
+const buildFolder = 'build';
 
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
 
 
 const cleanWebpack = new CleanWebpackPlugin(
-    [`./${appName}`]
+    [`./${buildFolder}`]
 );
 const copyWebpack = new CopyWebpackPlugin(
     [
-        {from: './src/assets/', to: './assets'},
-        {from: './src/html', to: './'}
+        {from: './app/src/assets/', to: './assets'},
+        {from: './app/src/html/', to: './'},
+        {from: './app/src/package/', to: './'},
     ],
     { ignore: ['.DS_Store'] }
 );
-const htmlWebpack = new HtmlWebpackPlugin(
+const miniCssExtract = new MiniCssExtractPlugin(
     {
-        filename: 'index.html',
-        template: './src/html/index.html'
+        filename: `den.css`
     }
 );
-const miniCssExtract = new MiniCssExtractPlugin({
-    filename: `${appName}.[hash].css`
-});
 const styleLint = new StyleLintPlugin({
     configFile: '.stylelintrc',
     context: path.resolve(__dirname, `./src/sass/`),
@@ -36,33 +31,25 @@ const styleLint = new StyleLintPlugin({
     failOnError: false,
     quiet: false,
 });
-const workbox = new WorkboxPlugin.InjectManifest(
-    {
-        swSrc: './src/ts/source/core/service-worker/sw.js',
-        swDest: 'sw.js'
-    }
-);
 
 
 const config = {
-    mode: 'development',
+    mode: 'production',
     entry: './app.ts',
     output: {
-        path: __dirname,
-        publicPath:`/`,
-        filename: `${appName}.[hash].js`
+        filename: `main.js`,
+        path: path.resolve(__dirname, `${buildFolder}/`)
     },
     plugins: [
         cleanWebpack,
         copyWebpack,
-        htmlWebpack,
         miniCssExtract,
-        workbox,
-        styleLint
+        styleLint,
     ],
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     },
+    target: 'electron-main',
     module: {
         rules: [
             {
@@ -82,11 +69,11 @@ const config = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: `url-loader?name=${appName}/assets/images/[name].[ext]`
+                loader: `url-loader?name=${buildFolder}/assets/images/[name].[ext]`
             },
             {
                 test: /\.(ttf|woff|woff2)$/i,
-                loader: `url-loader?name=${appName}/assets/fonts/[name].[ext]`
+                loader: `url-loader?name=${buildFolder}/assets/fonts/[name].[ext]`
             },
             {
                 test: /\.ts$/,
@@ -96,31 +83,7 @@ const config = {
                 }
             }
         ]
-    },
-    // devServer: {
-    //     contentBase: path.join(__dirname, `${appName}`),
-    //     compress: true,
-    //     inline: true,
-    //     port: 9000,
-    //     publicPath: '/',
-    //     stats: {
-    //         colors: true,
-    //         hash: false,
-    //         version: false,
-    //         timings: false,
-    //         assets: true,
-    //         chunks: false,
-    //         modules: false,
-    //         reasons: false,
-    //         children: false,
-    //         source: false,
-    //         errors: true,
-    //         errorDetails: true,
-    //         warnings: true,
-    //         publicPath: true
-    //     },
-    //     watchContentBase: true
-    // }
+    }
 };
 
 
