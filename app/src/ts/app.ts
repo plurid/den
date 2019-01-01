@@ -38,14 +38,14 @@ function createWindow() {
     // Open the DevTools.
     win.webContents.openDevTools();
 
-    const view = new BrowserView({
-        webPreferences: {
-            nodeIntegration: false,
-        },
-    });
-    win.setBrowserView(view);
-    view.setBounds({ x: 0, y: 38, width: 1440, height: 860 });
-    view.webContents.loadURL('https://electronjs.org');
+    // const view = new BrowserView({
+    //     webPreferences: {
+    //         nodeIntegration: false,
+    //     },
+    // });
+    // win.setBrowserView(view);
+    // view.setBounds({ x: 0, y: 38, width: 1440, height: 860 });
+    // view.webContents.loadURL('https://electronjs.org');
 
 
     // Emitted when the window is closed.
