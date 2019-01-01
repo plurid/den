@@ -25,8 +25,10 @@ function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
         height: 600,
+        icon: './assets/meta/den.png',
         minHeight: 500,
         minWidth: 300,
+        title: 'Den',
         titleBarStyle: 'hiddenInset',
         width: 800,
     });
