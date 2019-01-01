@@ -1,3 +1,10 @@
+*, *:after, *:before {
+    box-sizing: border-box;
+    font-kerning: auto;
+    text-rendering: optimizeLegibility;
+}
+
+
 html, body {
     // body {
         width: 100vw;
@@ -12,12 +19,14 @@ html, body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', Verdana, sans-serif;
 }
 
+
 .den-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
 }
+
 
 .den-title-bar {
     -webkit-app-region: drag;
@@ -26,35 +35,73 @@ html, body {
     background-color: hsl(220, 0%, 8%);
 }
 
-.dev {
-    margin-left: 100px;
-    margin-top: 50px;
+
+// .dev {
+//     margin-left: 100px;
+//     margin-top: 50px;
+// }
+
+
+
+
+.container {
+    position: absolute;
+    top: 38px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, #252727 0%, #111212 100%);
+}
+
+.space {
+    display: block;
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    perspective-origin: center 300px;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+.roots {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    // transform-origin: 50% 450.5px 0px;
+    // transform: matrix3d(0.379268, 0.403107, 0.645105, 0, -2.35922e-17, 0.720841, -0.450431, 0, -0.760694, 0.200981, 0.321638, 0, -140, -70, 0, 1);
+}
+
+.root {
+    position: absolute;
+    width: 100%;
+    transform-style: preserve-3d;
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+}
+
+.sheet {
+    transform-style: preserve-3d;
+    padding: 40px;
+    padding-top: 80px;
+    position: absolute;
+    width: 100%;
+}
+
+.branch {
+    position: absolute;
+}
+
+#branch-a {
+    transform: translateX(500px) translateY(500px) scale(0.6);
+    // transform: translateX(593px) translateY(554px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1)
 }
 
 
 webview {
-    position: absolute;
     // display: block;
+    position: absolute;
     border: none;
     height: 1000px;
     width: 1000px;
-}
-
-#view-a {
-    transform: rotateY(45deg);
-}
-
-#view-b {
-    transform: translateX(300px) rotateY(-35deg);
-    // transform: translateX(300px);
-}
-
-.views {
-    position: absolute;
-    overflow: hidden;
-    top: 38px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    perspective: 700px;
 }
