@@ -1,4 +1,4 @@
-const appName = 'den';
+const appName = 'build';
 
 const path = require('path');
 const webpack = require('webpack');
@@ -14,20 +14,21 @@ const cleanWebpack = new CleanWebpackPlugin(
 );
 const copyWebpack = new CopyWebpackPlugin(
     [
-        {from: './src/assets/', to: './assets'},
-        {from: './src/html', to: './'}
+        {from: './app/src/assets/', to: './assets'},
+        {from: './app/src/html/', to: './'},
+        {from: './app/src/package/', to: './'},
     ],
     { ignore: ['.DS_Store'] }
 );
-const htmlWebpack = new HtmlWebpackPlugin(
-    {
-        filename: 'index.html',
-        template: './src/html/index.html'
-    }
-);
+// const htmlWebpack = new HtmlWebpackPlugin(
+//     {
+//         filename: 'index.html',
+//         template: './src/html/index.html'
+//     }
+// );
 const miniCssExtract = new MiniCssExtractPlugin(
     {
-        filename: `${appName}.[hash].css`
+        filename: `den.css`
     }
 );
 // const workbox = new WorkboxPlugin.InjectManifest(
@@ -42,13 +43,13 @@ const config = {
     mode: 'production',
     entry: './app.ts',
     output: {
-        filename: `${appName}.[hash].js`,
+        filename: `main.js`,
         path: path.resolve(__dirname, `${appName}/`)
     },
     plugins: [
         cleanWebpack,
         copyWebpack,
-        htmlWebpack,
+        // htmlWebpack,
         miniCssExtract,
         // workbox
     ],
