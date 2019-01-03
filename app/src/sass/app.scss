@@ -60,7 +60,6 @@ html, body {
     transform-style: preserve-3d;
     perspective: 1000px;
     perspective-origin: center 300px;
-
     -webkit-font-smoothing: antialiased;
 }
 
@@ -85,7 +84,7 @@ html, body {
     padding: 40px;
     padding-top: 80px;
     position: absolute;
-    width: 100%;
+    width: 1200px;
     background-color: hsl(220, 3%, 30%);
 }
 
@@ -95,16 +94,22 @@ html, body {
 }
 
 #branch-a {
-    transform: translateX(393px) translateY(54px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1)
+    transform: translateX(393px) translateY(254px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1)
     // transform: translateX(500px) translateY(500px) scale(0.6);
     // transform: translateX(593px) translateY(554px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1)
 }
 
 
 webview {
-    display: flex;
-    position: absolute;
-    border: none;
+    // display: flex;
+    // position: absolute;
+    // left: 0;
+    // top: 38px;
     height: 1000px;
-    width: 1000px;
+    width: 1200px;
+    // border: none;
+    // margin: 0;
+    // border: 0;
+    // padding: 0;
+    // will-change: transform;
 }

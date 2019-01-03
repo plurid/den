@@ -69,7 +69,7 @@ html, body {
   padding: 40px;
   padding-top: 80px;
   position: absolute;
-  width: 100%;
+  width: 1200px;
   background-color: #4a4c4f; }
 
 .branch {
@@ -77,13 +77,10 @@ html, body {
   background-color: #303636; }
 
 #branch-a {
-  -webkit-transform: translateX(393px) translateY(54px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1);
-          transform: translateX(393px) translateY(54px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1); }
+  -webkit-transform: translateX(393px) translateY(254px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1);
+          transform: translateX(393px) translateY(254px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scale(1); }
 
 webview {
-  display: flex;
-  position: absolute;
-  border: none;
   height: 1000px;
-  width: 1000px; }
+  width: 1200px; }
 
