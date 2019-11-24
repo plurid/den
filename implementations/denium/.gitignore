@@ -76,11 +76,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Cypress
-test/cypress/examples
-test/cypress/screenshots
-test/cypress/videos
-cypress.env.json
-
 # Project
-/den
+build
