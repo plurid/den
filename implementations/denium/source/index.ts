@@ -1,8 +1,8 @@
 import {
     app,
-    BrowserView,
+    // BrowserView,
     BrowserWindow,
-    systemPreferences,
+    // systemPreferences,
 } from 'electron';
 
 
@@ -18,7 +18,7 @@ function createWindow() {
         icon: './assets/meta/den.png',
         minHeight: 500,
         minWidth: 300,
-        title: 'Den',
+        title: 'den',
         titleBarStyle: 'hiddenInset',
         webPreferences: {
             nodeIntegration: true,
