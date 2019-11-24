@@ -32,6 +32,18 @@ Download system-specific application from [den.plurid.com/install](https://den.p
 
 
 
+## Screenshots
+
+<p align="center">
+    <img src="https://github.com/plurid/den/tree/master/implementations/denium/about/screenshots/ss-1.png" width="500px">
+</p>
+
+<p align="center">
+    <img src="https://github.com/plurid/den/tree/master/implementations/denium/about/screenshots/ss-2.png" width="500px">
+</p>
+
+
+
 ## Build
 
 In the Terminal application, clone the repository
