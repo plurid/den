@@ -5,7 +5,7 @@
 
 
 <p align="center">
-    <img src="https://img.shields.io/badge/version-0.0.1-blue.svg?colorB=000000&style=for-the-badge" alt="Version">
+    <img src="https://img.shields.io/badge/version-0.1.0-blue.svg?colorB=000000&style=for-the-badge" alt="Version">
     <a href="https://github.com/plurid/den/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/license-MIT-blue.svg?colorB=000000&style=for-the-badge" alt="License">
     </a>
@@ -14,10 +14,10 @@
 
 
 <h1 align="center">
-    denium
+    den
 </h1>
 
-[Plurid](https://github.com/plurid/plurid)-based web browser implemented on Electron/Chromium.
+[Plurid](https://github.com/plurid/plurid)-powered web browser based on Electron/Chromium.
 
 
 
