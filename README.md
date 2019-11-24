@@ -33,5 +33,5 @@ Download system-specific application from [den.plurid.com/install](https://den.p
 
 The browser has two implementations
 
-+ using Chromium/Electron (denium)
-+ ground-up development (den)
++ denium - using Chromium/Electron
++ den - ground-up development
