@@ -7,7 +7,7 @@ import PluridApp, {
 
 
 
-const SimplePage = ({path}: any) => (<webview style={{height: '500px', width: '1000px'}} src={path} />);
+const SimplePage = ({path}: any) => (<webview style={{height: '700px', width: '1000px'}} src={path} />);
 
 
 const View: React.FC<any> = () => {
