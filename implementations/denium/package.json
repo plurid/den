@@ -15,9 +15,8 @@
     "scripts": {
         "clean": "rm -rf ./build",
         "test": "jest ./app/test/unit/",
-        "build.webpack": "yarn clean && webpack --config ./scripts/webpack.config.js",
         "build": "yarn clean && webpack -p --env prod --progress --profile --colors",
-        "develop": "webpack -p --env dev",
+        "develop": "yarn clean && webpack --config ./scripts/webpack.config.js",
         "watch": "webpack --watch --env dev",
         "electron": "electron ./build/",
         "electron.run": "yarn develop && yarn electron",
