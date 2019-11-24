@@ -2,11 +2,12 @@ import React from 'react';
 
 import PluridApp, {
     PluridPage,
+    PluridConfiguration,
 } from '@plurid/plurid-react';
 
 
 
-const SimplePage = ({path}: any) => (<webview style={{height: '500px'}} src={path} />);
+const SimplePage = ({path}: any) => (<webview style={{height: '500px', width: '1000px'}} src={path} />);
 
 
 const View: React.FC<any> = () => {
@@ -27,9 +28,20 @@ const View: React.FC<any> = () => {
         },
     ];
 
+    const pluridAppConfiguration: Partial<PluridConfiguration> = {
+        theme: 'plurid',
+        space: {
+            layout: {
+                type: 'ZIG_ZAG',
+            },
+        },
+        planeOpacity: 0,
+    };
+
     return (
         <PluridApp
             pages={pluridPages}
+            configuration={pluridAppConfiguration}
         />
     );
 }
