@@ -9,6 +9,9 @@ module.exports = [
         mode: 'development',
         entry: './source/index.ts',
         target: 'electron-main',
+        resolve: {
+            extensions: [".ts", ".tsx", ".js", ".jsx"]
+        },
         module: {
             rules: [{
                 test: /\.ts$/,
@@ -26,6 +29,9 @@ module.exports = [
         entry: './source/renderer/index.tsx',
         target: 'electron-renderer',
         devtool: 'source-map',
+        resolve: {
+            extensions: [".ts", ".tsx", ".js", ".jsx"]
+        },
         module: { rules: [{
             test: /\.ts(x?)$/,
             include: /source/,
