@@ -14,7 +14,7 @@
     den
 </h1>
 
-[plurid](https://github.com/plurid/plurid)-powered web browser
+[plurid](https://github.com/plurid/plurid)-based web browser
 
 
 
@@ -31,7 +31,7 @@ Download system-specific application from [den.plurid.com/install](https://den.p
 
 ## Implementations
 
-The browser has two implementations
+The browser has two implementations:
 
 + [denium](https://github.com/plurid/den/tree/master/implementations/denium) - using Chromium/Electron
 + [den](https://github.com/plurid/den/tree/master/implementations/den) - ground-up development
