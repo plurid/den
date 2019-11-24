@@ -43,7 +43,7 @@ const config = {
         cleanWebpack,
         copyWebpack,
         miniCssExtract,
-        styleLint,
+        // styleLint,
     ],
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
