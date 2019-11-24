@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+    useState,
+} from 'react';
 
 import PluridApp, {
     PluridPage,
@@ -7,25 +9,50 @@ import PluridApp, {
 
 import Page from '../../components/Page';
 
+import PluriverseContext from './context';
+
 
 
 const Pluriverse: React.FC<any> = () => {
-    const pathChange = (value: string) => {
-        console.log(value);
+    const [pages, setPages] = useState([
+        {
+            id: 'one',
+            path: 'https://google.com',
+        },
+        {
+            id: 'two',
+            path: 'https://plurid.com',
+        },
+    ]);
+
+    const pathChange = (event: any, id: string) => {
+        // console.log(event, id);
+        const updatedPages = pages.map(page => {
+            if (page.id === id) {
+                return {
+                    ...page,
+                    path: event.target.value,
+                };
+            }
+            return {...page};
+        });
+        setPages(updatedPages);
     }
 
     const pluridPages: PluridPage[] = [
         {
+            id: 'one',
             path: 'https://www.google.com',
             component: {
-                element: () => <Page src="https://www.google.com" />,
+                element: () => <Page id="one" />,
             },
             root: true,
         },
         {
+            id: 'two',
             path: 'https://plurid.com',
             component: {
-                element: () => <Page src="https://plurid.com" />,
+                element: () => <Page id="two" />,
             },
             root: true,
         },
@@ -42,10 +69,16 @@ const Pluriverse: React.FC<any> = () => {
         pathChange,
     };
 
+    const pageContext = {
+        pages,
+    };
+
     return (
         <PluridApp
             pages={pluridPages}
             configuration={pluridAppConfiguration}
+            pageContext={PluriverseContext}
+            pageContextValue={pageContext}
         />
     );
 }
