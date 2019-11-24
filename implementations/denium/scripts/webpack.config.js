@@ -47,6 +47,7 @@ module.exports = [
             }),
             new CopyWebpackPlugin([
                 { from: './source/window/package.json', to: './package.json' },
+                { from: './source/assets/', to: './assets/' },
             ]),
         ]
     }
