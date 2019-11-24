@@ -7,5 +7,5 @@ ReactDOM.render(
     <div>
         <h4>rendered</h4>
     </div>,
-    document.getElementById('app'),
+    document.getElementById('denium'),
 );
