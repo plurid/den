@@ -10,6 +10,10 @@ import Page from '../../components/Page';
 
 
 const Pluriverse: React.FC<any> = () => {
+    const pathChange = (value: string) => {
+        console.log(value);
+    }
+
     const pluridPages: PluridPage[] = [
         {
             path: 'https://www.google.com',
@@ -35,6 +39,7 @@ const Pluriverse: React.FC<any> = () => {
             },
         },
         planeOpacity: 0,
+        pathChange,
     };
 
     return (
