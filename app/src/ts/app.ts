@@ -35,11 +35,11 @@ function createWindow() {
         titleBarStyle: 'hiddenInset',
         webPreferences: {
             nodeIntegration: true,
+            webviewTag: true,
         },
         width: 800,
     });
-    systemPreferences.isDarkMode();
-
+    // systemPreferences.isDarkMode();
 
     // and load the index.html of the app.
     win.loadFile('index.html');
