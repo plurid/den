@@ -2,14 +2,14 @@ const buildFolder = 'build';
 
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
-const cleanWebpack = new CleanWebpackPlugin(
-    [`./${buildFolder}`]
-);
+const cleanWebpack = new CleanWebpackPlugin({
+    // [`./${buildFolder}`]
+});
 const copyWebpack = new CopyWebpackPlugin(
     [
         {from: './app/src/assets/', to: './assets'},
