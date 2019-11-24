@@ -5,24 +5,23 @@ import PluridApp, {
     PluridConfiguration,
 } from '@plurid/plurid-react';
 
+import Page from '../../components/Page';
 
 
-const SimplePage = ({path}: any) => (<webview style={{height: '700px', width: '1000px'}} src={path} />);
 
-
-const View: React.FC<any> = () => {
+const Pluriverse: React.FC<any> = () => {
     const pluridPages: PluridPage[] = [
         {
             path: 'https://www.google.com',
             component: {
-                element: () => <SimplePage path="https://www.google.com" />,
+                element: () => <Page src="https://www.google.com" />,
             },
             root: true,
         },
         {
             path: 'https://plurid.com',
             component: {
-                element: () => <SimplePage path="https://plurid.com" />,
+                element: () => <Page src="https://plurid.com" />,
             },
             root: true,
         },
@@ -47,4 +46,4 @@ const View: React.FC<any> = () => {
 }
 
 
-export default View;
+export default Pluriverse;
