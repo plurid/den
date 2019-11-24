@@ -13,17 +13,17 @@ let win: any;
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-    height: 600,
-    icon: './assets/meta/den.png',
-    minHeight: 500,
-    minWidth: 300,
-    title: 'Den',
-    titleBarStyle: 'hiddenInset',
-    webPreferences: {
-        nodeIntegration: true,
-        webviewTag: true,
-    },
-    width: 800,
+        width: 1000,
+        height: 800,
+        icon: './assets/meta/den.png',
+        minHeight: 500,
+        minWidth: 300,
+        title: 'Den',
+        titleBarStyle: 'hiddenInset',
+        webPreferences: {
+            nodeIntegration: true,
+            webviewTag: true,
+        },
     });
     // systemPreferences.isDarkMode();
 
