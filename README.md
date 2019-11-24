@@ -25,7 +25,7 @@
 
 ## Install
 
-Download system-specific application from [den.plurid.com/install](https://den.plurid.com/install).
+Download system-specific application from [den.plurid.com](https://den.plurid.com).
 
 
 
