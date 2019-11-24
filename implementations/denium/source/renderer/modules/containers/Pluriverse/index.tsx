@@ -13,14 +13,14 @@ const SimplePage = ({path}: any) => (<webview style={{height: '500px', width: '1
 const View: React.FC<any> = () => {
     const pluridPages: PluridPage[] = [
         {
-            path: '/one',
+            path: 'https://www.google.com',
             component: {
                 element: () => <SimplePage path="https://www.google.com" />,
             },
             root: true,
         },
         {
-            path: '/two',
+            path: 'https://plurid.com',
             component: {
                 element: () => <SimplePage path="https://plurid.com" />,
             },
