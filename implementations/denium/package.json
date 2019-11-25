@@ -15,14 +15,14 @@
     "scripts": {
         "clean": "rm -rf ./build",
         "test": "jest ./app/test/unit/",
-        "build": "yarn clean && webpack -p --env prod --progress --profile --colors",
+        "watch": "yarn clean && webpack --watch --config ./scripts/webpack.config.js --env dev",
         "develop": "yarn clean && webpack --config ./scripts/webpack.config.js",
-        "watch": "webpack --watch --env dev",
+        "build": "yarn clean && webpack --config ./scripts/webpack.config.js -p --env prod --progress --profile --colors",
         "electron": "electron ./build/",
         "electron.run": "yarn develop && yarn electron",
-        "electron.linux": "electron-packager ./build/ den --overwrite --asar=true --platform=linux --arch=x64 --icon=./build/assets/meta/den.png --prune=true --out=den",
-        "electron.mac": "electron-packager ./build/ --overwrite --platform=darwin --arch=x64 --icon=./build/assets/meta/den.icns --prune=true --out=den",
-        "electron.windows": "electron-packager ./build/ den --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/den.ico --prune=true --out=den --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"den\""
+        "electron.linux": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=linux --arch=x64 --icon=./build/assets/meta/den.png --prune=true --out=den",
+        "electron.mac": "yarn build && electron-packager ./build/ --overwrite --platform=darwin --arch=x64 --icon=./build/assets/meta/den.icns --prune=true --out=den",
+        "electron.windows": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/den.ico --prune=true --out=den --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"den\""
     },
     "devDependencies": {
         "@types/jest": "^24.0.23",

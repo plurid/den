@@ -56,24 +56,28 @@ change the directory
 
 install the dependencies
 
-    npm install
+    yarn install
 
-run the build process to aggregate the files from `./app/` to `./build/`
+run the build process to aggregate the files from `./source/` to `./build/`
 
-    npm run build
+    yarn build
+
+or
+
+    yarn develop
 
 run the electron build process
 
-    npm run electron
+    yarn electron
 
 
 For a continuous build process
 
-    npm run watch
+    yarn watch
 
 
 To package the application run the command specific to the operating system
 
-    npm run electron:linux
-    npm run electron:mac
-    npm run electron:windows
+    yarn electron.linux
+    yarn electron.mac
+    yarn electron.windows
