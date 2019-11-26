@@ -25,7 +25,7 @@ const Pluriverse: React.FC<any> = () => {
         },
     ]);
 
-    const pathChange = (event: any, id: string) => {
+    const pathbarOnChange = (event: any, id: string) => {
         // console.log(event, id);
         const updatedPages = pages.map(page => {
             if (page.id === id) {
@@ -66,7 +66,7 @@ const Pluriverse: React.FC<any> = () => {
             },
         },
         planeOpacity: 0,
-        pathChange,
+        pathbarOnChange,
     };
 
     const pageContext = {

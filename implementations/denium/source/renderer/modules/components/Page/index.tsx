@@ -1,5 +1,8 @@
 import React, {
+    useRef,
     useContext,
+    useState,
+    useEffect,
 } from 'react';
 
 import {
@@ -15,6 +18,8 @@ interface PageProperties {
 }
 
 const Page: React.FC<PageProperties> = (properties) => {
+    const webviewElement = useRef<HTMLWebViewElement>(null);
+
     const context: any = useContext(PluriverseContext);
 
     const {
@@ -38,10 +43,38 @@ const Page: React.FC<PageProperties> = (properties) => {
 
     const src = page.path;
 
+    const [url, setURL] = useState(src);
+
+    const handleURL = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        setURL(event.target.value)
+    }
+
+    useEffect(() => {
+        if (webviewElement.current) {
+            webviewElement.current.addEventListener('dom-ready', async () => {
+                const url = (webviewElement as any).current.getURL();
+                setURL(url);
+            });
+        }
+    }, [
+        webviewElement.current,
+    ]);
+
     return (
         <StyledPage>
+            <div>
+                <input
+                    type="text"
+                    value={url}
+                    onChange={handleURL}
+                />
+            </div>
+
             <webview
                 src={src}
+                ref={webviewElement}
             />
         </StyledPage>
     );
