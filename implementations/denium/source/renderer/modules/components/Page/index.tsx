@@ -58,7 +58,14 @@ const Page: React.FC<PageProperties> = (properties) => {
         event: React.KeyboardEvent<HTMLInputElement>,
     ) => {
         if (event.key === 'Enter') {
-            updateURL(url, id);
+            const urlRE = /^https?:\/\//;
+            if (url.test(urlRE)) {
+                updateURL(url, id);
+                return;
+            }
+
+            const httpsURL = 'https://' + url;
+            updateURL(httpsURL, id);
         }
     }
 
