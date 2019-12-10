@@ -2,11 +2,11 @@ import React, {
     useState,
 } from 'react';
 
+import themes from '@plurid/plurid-themes';
+
 import {
     StyledTopBar,
 } from './styled';
-
-import themes from '@plurid/plurid-themes';
 
 
 
