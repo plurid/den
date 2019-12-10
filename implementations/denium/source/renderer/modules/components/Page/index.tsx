@@ -59,7 +59,7 @@ const Page: React.FC<PageProperties> = (properties) => {
     ) => {
         if (event.key === 'Enter') {
             const urlRE = /^https?:\/\//;
-            if (url.test(urlRE)) {
+            if (urlRE.test(url)) {
                 updateURL(url, id);
                 return;
             }
