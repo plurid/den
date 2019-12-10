@@ -9,6 +9,8 @@ import {
     StyledPage,
 } from './styled';
 
+import PageBar from './components/PageBar';
+
 import PluriverseContext from '../../containers/Pluriverse/context';
 
 
@@ -24,6 +26,7 @@ const Page: React.FC<PageProperties> = (properties) => {
 
     const {
         pages,
+        updateURL,
     } = context;
 
     const {
@@ -51,6 +54,14 @@ const Page: React.FC<PageProperties> = (properties) => {
         setURL(event.target.value)
     }
 
+    const handleURLChange = (
+        event: React.KeyboardEvent<HTMLInputElement>,
+    ) => {
+        if (event.key === 'Enter') {
+            updateURL(url, id);
+        }
+    }
+
     useEffect(() => {
         if (webviewElement.current) {
             webviewElement.current.addEventListener('dom-ready', async () => {
@@ -64,13 +75,11 @@ const Page: React.FC<PageProperties> = (properties) => {
 
     return (
         <StyledPage>
-            <div>
-                <input
-                    type="text"
-                    value={url}
-                    onChange={handleURL}
-                />
-            </div>
+            <PageBar
+                url={url}
+                handleURL={handleURL}
+                handleURLChange={handleURLChange}
+            />
 
             <webview
                 src={src}
