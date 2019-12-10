@@ -40,18 +40,17 @@ const PageBar: React.FC<PageBarOwnProperties> = (properties) => {
             // mouseOver={mouseOver}
             theme={theme}
         >
+            <div>
+            </div>
+
             <PluridTextline
                 text={url}
                 atChange={handleURL}
                 atKeyDown={handleURLChange}
             />
 
-            {/* <input
-                type="text"
-                value={url}
-                onChange={handleURL}
-                onKeyDown={handleURLChange}
-            /> */}
+            <div>
+            </div>
         </StyledPageBar>
     );
 }
