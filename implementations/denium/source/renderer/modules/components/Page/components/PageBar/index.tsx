@@ -47,6 +47,7 @@ const PageBar: React.FC<PageBarOwnProperties> = (properties) => {
                 text={url}
                 atChange={handleURL}
                 atKeyDown={handleURLChange}
+                enterIcon={true}
             />
 
             <div>
