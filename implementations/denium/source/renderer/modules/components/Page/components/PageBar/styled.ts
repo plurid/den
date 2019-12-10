@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 
 export const StyledPageBar: any = styled.div`
-    height: 40px;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+
     background-color: ${(props: any) => {
-        if (props.mouseOver) {
-            return props.theme.backgroundColorDark;
-        }
-        return 'transparent';
+        return props.theme.backgroundColorDark;
     }};
 `;
