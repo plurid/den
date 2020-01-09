@@ -5,6 +5,8 @@ import React, {
 import PluridApp, {
     PluridPage,
     PluridConfiguration,
+    RecursivePartial,
+    SPACE_LAYOUT,
 } from '@plurid/plurid-react';
 
 import Page from '../../components/Page';
@@ -25,12 +27,12 @@ const Pluriverse: React.FC<any> = () => {
         },
     ]);
 
-    const pathbarOnChange = (
-        event: any,
-        id: string,
-    ) => {
-        updateURL(event.target.value, id);
-    }
+    // const pathbarOnChange = (
+    //     event: any,
+    //     id: string,
+    // ) => {
+    //     updateURL(event.target.value, id);
+    // }
 
     const updateURL = (
         value: string,
@@ -67,16 +69,21 @@ const Pluriverse: React.FC<any> = () => {
         },
     ];
 
-    const pluridAppConfiguration: Partial<PluridConfiguration> = {
+    const pluridAppConfiguration: RecursivePartial<PluridConfiguration> = {
         theme: 'plurid',
         space: {
             layout: {
-                type: 'ZIG_ZAG',
+                type: SPACE_LAYOUT.ZIG_ZAG,
             },
         },
-        planeOpacity: 0,
-        planeControls: false,
-        pathbarOnChange,
+        elements: {
+            plane: {
+                opacity: 0,
+                controls: {
+                    show: false,
+                }
+            }
+        }
     };
 
     const pageContext = {
