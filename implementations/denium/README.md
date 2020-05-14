@@ -35,11 +35,7 @@ Download system-specific application from [den.plurid.com/install](https://den.p
 ## Screenshots
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/plurid/den/master/implementations/denium/about/screenshots/ss-1.png" height="500px">
-</p>
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/plurid/den/master/implementations/denium/about/screenshots/ss-2.png" height="500px">
+    <img src="https://raw.githubusercontent.com/plurid/den/master/implementations/denium/about/screenshots/ss.png" height="500px">
 </p>
 
 
