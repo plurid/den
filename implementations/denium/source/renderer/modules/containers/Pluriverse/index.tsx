@@ -3,9 +3,8 @@ import React, {
 } from 'react';
 
 import PluridApp, {
-    PluridPage,
-    PluridConfiguration,
-    RecursivePartial,
+    PluridPlane,
+    PluridPartialConfiguration,
     SPACE_LAYOUT,
 } from '@plurid/plurid-react';
 
@@ -50,26 +49,24 @@ const Pluriverse: React.FC<any> = () => {
         setPages(updatedPages);
     }
 
-    const pluridPages: PluridPage[] = [
+    const pluridPages: PluridPlane[] = [
         {
-            id: 'one',
             path: 'https://www.google.com',
             component: {
+                kind: 'react',
                 element: () => <Page id="one" />,
             },
-            root: true,
         },
         {
-            id: 'two',
             path: 'https://plurid.com',
             component: {
+                kind: 'react',
                 element: () => <Page id="two" />,
             },
-            root: true,
         },
     ];
 
-    const pluridAppConfiguration: RecursivePartial<PluridConfiguration> = {
+    const pluridAppConfiguration: PluridPartialConfiguration = {
         theme: 'plurid',
         space: {
             layout: {
@@ -86,6 +83,11 @@ const Pluriverse: React.FC<any> = () => {
         }
     };
 
+    const view = [
+        'https://www.google.com',
+        'https://plurid.com',
+    ];
+
     const pageContext = {
         pages,
         updateURL,
@@ -93,10 +95,11 @@ const Pluriverse: React.FC<any> = () => {
 
     return (
         <PluridApp
-            pages={pluridPages}
+            planes={pluridPages}
+            view={view}
             configuration={pluridAppConfiguration}
-            pageContext={PluriverseContext}
-            pageContextValue={pageContext}
+            planeContext={PluriverseContext}
+            planeContextValue={pageContext}
         />
     );
 }
