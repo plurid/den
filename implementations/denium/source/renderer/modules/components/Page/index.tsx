@@ -5,6 +5,10 @@ import React, {
     useEffect,
 } from 'react';
 
+// import {
+//     remote,
+// } from 'electron';
+
 import {
     StyledPage,
 } from './styled';
@@ -72,8 +76,15 @@ const Page: React.FC<PageProperties> = (properties) => {
     useEffect(() => {
         if (webviewElement.current) {
             webviewElement.current.addEventListener('dom-ready', async () => {
+                // const webContents = remote.webContents.fromId((webviewElement as any).current.getWebContentsId())
+                // console.log('webContents', webContents);
+
                 const url = (webviewElement as any).current.getURL();
                 setURL(url);
+            });
+
+            webviewElement.current.addEventListener('will-navigate', async (event) => {
+                console.log('navigation', event);
             });
         }
     }, [
