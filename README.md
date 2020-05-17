@@ -50,7 +50,7 @@ A `relater` handles the connection between the user and the network providing
 
 We have nowadays the User, the user of an application, the user of an operating system. Even if you are the one and only, true owner of a piece of data, the system still refers to you as a user, using a username, using the user interface, within the userspace. And this is jolly good in the realm of non-networked interaction, when it is truly you and the system, together alone, and you can conveniently switch hats from a user delimited, controlled even, by the system's constraints to the true master, super user, of the system. However, consider the user in a networked context, against a myriad of other users, and the general pattern of interaction becomes rife will all kinds of `ab-use` and `ob-use`†.
 
-However, `kill`ing must always be done gracefully, `spawn`ing another system, process, stream, field in it's place.
+However, `kill`ing must always be done gracefully, `spawn`ing another system, process, stream, field in the `kill`ed place.
 
 `den` proposes to evolve the `user` into an `owner`.
 
