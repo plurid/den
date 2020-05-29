@@ -30,7 +30,7 @@
 
 ## Metaphysics
 
-`Metaphysics`, that is, a look on the ground and at the sky, a fish pondering what is water. Although a more appropriate name to the subject matter would be `Metarythmics`, from `meta`, Greek for beyond, and `arithmos`, Greek for digit, number. But since that is quite a horrendous construction, historically based on [a clerical misthinking](https://plato.stanford.edu/entries/aristotle-metaphysics/), perhaps `Cosmetics` would be more fit, given that even our highest metaphysics is still contained in the cosmos, and even given that the appearance is the essence.
+`Metaphysics`, that is, a look on the ground and at the sky, a fish pondering what is water. Although a more appropriate name to the subject matter would be `Metarythmics`, from `meta`, Greek for beyond, and `arithmos`, Greek for digit, number. But since that is quite a horrendous construction, historically based on [a clerical misthinking](https://plato.stanford.edu/entries/aristotle-metaphysics/), perhaps `Cosmetics` would be more fit, given that even our highest metaphysics is still contained in the cosmos, and even given that the appearance is the essence, and considering that 'cosmetics' is the next step beyond ['handy home computers'](https://2.bp.blogspot.com/-qvL6IwxRhAs/VTkQvgpCZEI/AAAAAAAAA3o/NRBpOmsbAsI/s1600/Handy%2BHome%2BComputers.JPG).
 
 
 ### From Browsers to Relaters
