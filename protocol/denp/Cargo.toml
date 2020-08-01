@@ -1,0 +1,9 @@
+[package]
+name = "denp"
+version = "0.1.0"
+authors = ["ly3xqhl8g9 <ly3xqhl8g9@plurid.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
