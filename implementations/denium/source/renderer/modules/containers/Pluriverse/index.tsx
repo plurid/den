@@ -2,7 +2,8 @@ import React, {
     useState,
 } from 'react';
 
-import PluridApp, {
+import {
+    PluridApplication,
     PluridPlane,
     PluridPartialConfiguration,
     SPACE_LAYOUT,
@@ -51,14 +52,14 @@ const Pluriverse: React.FC<any> = () => {
 
     const pluridPages: PluridPlane[] = [
         {
-            path: 'https://www.google.com',
+            route: 'https://www.google.com',
             component: {
                 kind: 'react',
                 element: () => <Page id="one" />,
             },
         },
         {
-            path: 'https://plurid.com',
+            route: 'https://plurid.com',
             component: {
                 kind: 'react',
                 element: () => <Page id="two" />,
@@ -67,7 +68,9 @@ const Pluriverse: React.FC<any> = () => {
     ];
 
     const pluridAppConfiguration: PluridPartialConfiguration = {
-        theme: 'plurid',
+        global: {
+            theme: 'plurid',
+        },
         space: {
             layout: {
                 type: SPACE_LAYOUT.ZIG_ZAG,
@@ -94,7 +97,7 @@ const Pluriverse: React.FC<any> = () => {
     };
 
     return (
-        <PluridApp
+        <PluridApplication
             planes={pluridPages}
             view={view}
             configuration={pluridAppConfiguration}
