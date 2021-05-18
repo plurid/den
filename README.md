@@ -1,10 +1,11 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/plurid/den/master/about/identity/den-logo.png" height="200px">
-</p>
-
-<p align="center">
-    <a href="https://github.com/plurid/den/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-blue.svg?colorB=000000&style=for-the-badge" alt="License">
+    <a target="_blank" href="https://den.plurid.com">
+        <img src="https://raw.githubusercontent.com/plurid/den/master/about/identity/den-logo.png" height="250px">
+    </a>
+    <br />
+    <br />
+    <a target="_blank" href="https://github.com/plurid/den/blob/master/LICENSE">
+        <img src="https://img.shields.io/badge/license-DEL-blue.svg?colorB=1380C3&style=for-the-badge" alt="License: DEL">
     </a>
 </p>
 
@@ -14,8 +15,9 @@
     den
 </h1>
 
+
 <p align="center">
-    <a href="https://github.com/plurid/plurid">Plurid</a>-Inspired Network Relater
+    Network Relater
 </p>
 
 
