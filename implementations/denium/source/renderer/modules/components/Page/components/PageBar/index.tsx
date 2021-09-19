@@ -3,8 +3,8 @@ import React, {
 } from 'react';
 
 import {
-    PluridTextline,
-} from '@plurid/plurid-ui-react';
+    universal,
+} from '@plurid/plurid-ui-components-react';
 
 import themes from '@plurid/plurid-themes';
 
@@ -14,6 +14,11 @@ import {
 
 
 
+const {
+    inputs: {
+        Textline: PluridTextline,
+    },
+} = universal;
 
 const theme = themes.plurid;
 

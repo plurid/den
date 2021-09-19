@@ -4,7 +4,7 @@ import React, {
 
 import {
     PluridApplication,
-    PluridPlane,
+    PluridReactPlane,
     PluridPartialConfiguration,
     SPACE_LAYOUT,
 } from '@plurid/plurid-react';
@@ -50,20 +50,18 @@ const Pluriverse: React.FC<any> = () => {
         setPages(updatedPages);
     }
 
-    const pluridPages: PluridPlane[] = [
+    const pluridPages: PluridReactPlane[] = [
         {
             route: 'https://www.google.com',
-            component: {
-                kind: 'react',
-                element: () => <Page id="one" />,
-            },
+            component: () => (
+                <Page id="one" />
+            ),
         },
         {
             route: 'https://plurid.com',
-            component: {
-                kind: 'react',
-                element: () => <Page id="two" />,
-            },
+            component: () => (
+                <Page id="two" />
+            ),
         },
     ];
 

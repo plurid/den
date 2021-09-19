@@ -76,4 +76,4 @@ app.on('activate', () => {
 });
 
 
-app.allowRendererProcessReuse = true;
+// app.allowRendererProcessReuse = true;
