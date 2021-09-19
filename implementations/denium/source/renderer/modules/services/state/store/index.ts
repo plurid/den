@@ -1,11 +1,4 @@
 // #region imports
-    // #region libraries
-    import {
-        environment,
-    } from '@aveled/ceris.libraries.data';
-    // #endregion libraries
-
-
     // #region internal
     import storeProduction, {
         AppState as AppStateProduction,
@@ -19,6 +12,10 @@
 
 
 // #region module
+const environment = {
+    production: process.env.NODE_ENV === 'production',
+};
+
 export type AppState =
     | AppStateProduction
     | AppStateDeveloment;

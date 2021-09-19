@@ -11,10 +11,6 @@
     import {
         composeWithDevTools,
     } from 'redux-devtools-extension';
-
-    import {
-        CERIS_LOCAL_STATE,
-    } from '@aveled/ceris.libraries.data';
     // #endregion libraries
 
 
@@ -60,11 +56,6 @@ const store = (
                     ...themes,
                 },
             };
-
-            localStorage.setItem(
-                CERIS_LOCAL_STATE,
-                JSON.stringify(newLocalStorageState),
-            );
         },
     );
 
