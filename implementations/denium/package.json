@@ -44,7 +44,6 @@
         "react-dom": "^17.0.2",
         "react-redux": "^7.2.5",
         "redux": "^4.1.1",
-        "redux-devtools-extension": "^2.13.9",
         "redux-thunk": "^2.3.0",
         "styled-components": "^5.3.1"
     },
@@ -57,6 +56,7 @@
         "electron-packager": "^15.4.0",
         "html-webpack-plugin": "^5.3.2",
         "jest": "^27.2.0",
+        "redux-devtools-extension": "^2.13.9",
         "ts-jest": "^27.0.5",
         "ts-loader": "^9.2.5",
         "ts-node": "^10.2.1",
