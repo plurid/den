@@ -1,38 +1,58 @@
-import React, {
-    useRef,
-    useContext,
-    useState,
-    useEffect,
-} from 'react';
+// #region imports
+    // #region libraries
+    import React, {
+        useRef,
+        useContext,
+        useState,
+        useEffect,
+    } from 'react';
 
-// import {
-//     remote,
-// } from 'electron';
-
-import {
-    StyledPage,
-} from './styled';
-
-import PageBar from './components/PageBar';
-
-import PluriverseContext from '../../containers/Pluriverse/context';
+    // import {
+    //     remote,
+    // } from 'electron';
+    // #endregion libraries
 
 
+    // #region external
+    import PluriverseContext from '../../containers/Pluriverse/context';
+    // #endregion external
 
-interface PageProperties {
+
+    // #region internal
+    import {
+        StyledPage,
+    } from './styled';
+
+    import PageBar from './components/PageBar';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region module
+export interface PageProperties {
     id: string;
 }
 
-const Page: React.FC<PageProperties> = (properties) => {
-    const webviewElement = useRef<HTMLWebViewElement>(null);
-
+const Page: React.FC<PageProperties> = (
+    properties,
+) => {
+    // #region context
     const context: any = useContext(PluriverseContext);
 
     const {
         pages,
         updateURL,
     } = context;
+    // #endregion context
 
+
+    // #region references
+    const webviewElement = useRef<HTMLWebViewElement>(null);
+    // #endregion references
+
+
+    // #region properties
     const {
         id,
     } = properties;
@@ -49,9 +69,18 @@ const Page: React.FC<PageProperties> = (properties) => {
     }
 
     const src = page.path;
+    // #endregion properties
 
-    const [url, setURL] = useState(src);
 
+    // #region state
+    const [
+        url,
+        setURL,
+    ] = useState(src);
+    // #endregion state
+
+
+    // #region handlers
     const handleURL = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
@@ -72,7 +101,10 @@ const Page: React.FC<PageProperties> = (properties) => {
             updateURL(httpsURL, id);
         }
     }
+    // #endregion handlers
 
+
+    // #region effects
     useEffect(() => {
         if (webviewElement.current) {
             webviewElement.current.addEventListener('dom-ready', async () => {
@@ -90,7 +122,10 @@ const Page: React.FC<PageProperties> = (properties) => {
     }, [
         webviewElement.current,
     ]);
+    // #endregion effects
 
+
+    // #region render
     return (
         <StyledPage>
             <PageBar
@@ -105,7 +140,12 @@ const Page: React.FC<PageProperties> = (properties) => {
             />
         </StyledPage>
     );
+    // #endregion render
 }
+// #endregion module
 
 
+
+// #region exports
 export default Page;
+// #endregion exports

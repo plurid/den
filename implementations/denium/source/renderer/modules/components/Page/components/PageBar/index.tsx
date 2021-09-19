@@ -1,19 +1,27 @@
-import React, {
-    useState,
-} from 'react';
+// #region imports
+    // #region libraries
+    import React, {
+        useState,
+    } from 'react';
 
-import {
-    universal,
-} from '@plurid/plurid-ui-components-react';
+    import {
+        universal,
+    } from '@plurid/plurid-ui-components-react';
 
-import themes from '@plurid/plurid-themes';
-
-import {
-    StyledPageBar,
-} from './styled';
-
+    import themes from '@plurid/plurid-themes';
+    // #endregion libraries
 
 
+    // #region internal
+    import {
+        StyledPageBar,
+    } from './styled';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region module
 const {
     inputs: {
         Textline: PluridTextline,
@@ -60,6 +68,10 @@ const PageBar: React.FC<PageBarOwnProperties> = (properties) => {
         </StyledPageBar>
     );
 }
+// #endregion module
 
 
+
+// #region exports
 export default PageBar;
+// #endregion exports

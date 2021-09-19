@@ -1,7 +1,12 @@
-import styled from 'styled-components';
+// #region imports
+    // #region libraries
+    import styled from 'styled-components';
+    // #endregion libraries
+// #endregion imports
 
 
 
+// #region module
 export const StyledTopBar: any = styled.div`
     -webkit-app-region: drag;
 
@@ -18,3 +23,4 @@ export const StyledTopBar: any = styled.div`
         return 'transparent';
     }};
 `;
+// #endregion module

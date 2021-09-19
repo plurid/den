@@ -1,21 +1,33 @@
-import React, {
-    useState,
-} from 'react';
+// #region imports
+    // #region libraries
+    import React, {
+        useState,
+    } from 'react';
 
-import {
-    PluridApplication,
-    PluridReactPlane,
-    PluridPartialConfiguration,
-    SPACE_LAYOUT,
-} from '@plurid/plurid-react';
-
-import Page from '../../components/Page';
-
-import PluriverseContext from './context';
-
+    import {
+        PluridApplication,
+        PluridReactPlane,
+        PluridPartialConfiguration,
+        SPACE_LAYOUT,
+    } from '@plurid/plurid-react';
+    // #endregion libraries
 
 
+    // #region external
+    import Page from '../../components/Page';
+    // #endregion external
+
+
+    // #region internal
+    import PluriverseContext from './context';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region module
 const Pluriverse: React.FC<any> = () => {
+    // #region state
     const [pages, setPages] = useState([
         {
             id: 'one',
@@ -26,7 +38,10 @@ const Pluriverse: React.FC<any> = () => {
             path: 'https://plurid.com',
         },
     ]);
+    // #endregion state
 
+
+    // #region handlers
     // const pathbarOnChange = (
     //     event: any,
     //     id: string,
@@ -49,7 +64,10 @@ const Pluriverse: React.FC<any> = () => {
         });
         setPages(updatedPages);
     }
+    // #endregion handlers
 
+
+    // #region properties
     const pluridPages: PluridReactPlane[] = [
         {
             route: 'https://www.google.com',
@@ -93,7 +111,10 @@ const Pluriverse: React.FC<any> = () => {
         pages,
         updateURL,
     };
+    // #endregion properties
 
+
+    // #region render
     return (
         <PluridApplication
             planes={pluridPages}
@@ -103,7 +124,12 @@ const Pluriverse: React.FC<any> = () => {
             planeContextValue={pageContext}
         />
     );
+    // #endregion render
 }
+// #endregion module
 
 
+
+// #region exports
 export default Pluriverse;
+// #endregion exports

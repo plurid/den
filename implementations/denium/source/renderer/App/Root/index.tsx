@@ -1,14 +1,26 @@
-import React from 'react';
+// #region imports
+    // #region libraries
+    import React from 'react';
+    // #endregion libraries
 
-import View from '../View';
+
+    // #region external
+    import View from '../View';
+    // #endregion external
+// #endregion imports
 
 
 
+// #region module
 const Root: React.FC<any> = () => {
     return (
         <View />
     );
 }
+// #endregion module
 
 
+
+// #region exports
 export default Root;
+// #endregion exports

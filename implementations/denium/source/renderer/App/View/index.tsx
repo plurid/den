@@ -1,10 +1,18 @@
-import React from 'react';
+// #region imports
+    // #region libraries
+    import React from 'react';
+    // #endregion libraries
 
-import Pluriverse from '../../modules/containers/Pluriverse';
-import TopBar from '../../modules/components/TopBar';
+
+    // #region external
+    import Pluriverse from '../../modules/containers/Pluriverse';
+    import TopBar from '../../modules/components/TopBar';
+    // #endregion external
+// #endregion imports
 
 
 
+// #region module
 const View: React.FC<any> = () => {
     return (
         <div>
@@ -14,6 +22,10 @@ const View: React.FC<any> = () => {
         </div>
     );
 }
+// #endregion module
 
 
+
+// #region exports
 export default View;
+// #endregion exports

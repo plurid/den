@@ -1,12 +1,17 @@
-import {
-    app,
-    // BrowserView,
-    BrowserWindow,
-    // systemPreferences,
-} from 'electron';
+// #region imports
+    // #region libraries
+    import {
+        app,
+        // BrowserView,
+        BrowserWindow,
+        // systemPreferences,
+    } from 'electron';
+    // #endregion libraries
+// #endregion imports
 
 
 
+// #region module
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win: any;
@@ -77,3 +82,4 @@ app.on('activate', () => {
 
 
 // app.allowRendererProcessReuse = true;
+// #endregion module
