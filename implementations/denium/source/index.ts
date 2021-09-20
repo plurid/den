@@ -29,6 +29,7 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
             webviewTag: true,
+            nativeWindowOpen: true,
         },
     });
     // systemPreferences.isDarkMode();
