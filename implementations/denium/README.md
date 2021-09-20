@@ -19,7 +19,7 @@
 
 
 
-`den` can be used as a legacy network browser, viewing and interacting with `HTTP` web sites, and as a network relater following the `deserve` protocol.
+`den` can be used as a legacy network browser, viewing and interacting with `HTTP` web sites, and as a network relater following the `deserve` protocol, owning the data you generate as you explore information.
 
 `denium` is [plurid](https://github.com/plurid/plurid)-based and implemented on Electron/Chromium.
 
