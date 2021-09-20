@@ -2,7 +2,7 @@
     // #region external
     import {
         AppState,
-    } from '../../../store';
+    } from '~renderer-services/state/store';
     // #endregion external
 // #endregion imports
 

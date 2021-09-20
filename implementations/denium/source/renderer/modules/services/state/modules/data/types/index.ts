@@ -1,3 +1,13 @@
+// #region imports
+    // #region external
+    import {
+        StateSpace,
+    } from '~renderer-data/interfaces';
+    // #endregion external
+// #endregion imports
+
+
+
 // #region module
 export const SET_DATA_FIELD = 'SET_DATA_FIELD';
 export interface SetDataFieldPayload<T = any> {
@@ -19,7 +29,7 @@ export interface ClearDataAction {
 
 
 export interface State {
-    spaces: Record<string, any>;
+    spaces: Record<string, StateSpace | undefined>;
 }
 
 

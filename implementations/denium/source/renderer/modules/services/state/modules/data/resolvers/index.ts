@@ -16,7 +16,7 @@
 
 
 // #region module
-export const setDataField = (
+const setDataField = (
     state: Types.State,
     action: Types.SetDataFieldAction,
 ): Types.State => {
@@ -28,10 +28,7 @@ export const setDataField = (
 }
 
 
-const clearData = (
-    state: Types.State,
-    action: Types.ClearDataAction,
-): Types.State => {
+const clearData = (): Types.State => {
     const newState = objects.clone(initialState, 'any');
 
     return {
@@ -42,6 +39,7 @@ const clearData = (
 
 
 const resolvers = {
+    setDataField,
     clearData,
 };
 // #endregion module
