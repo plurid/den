@@ -22,6 +22,7 @@
 // #region module
 const rootReducer = combineReducers({
     notifications: notifications.reducer,
+    data: modules.data.reducer,
     owner: modules.owner.reducer,
     product: modules.product.reducer,
     // shortcuts: modules.shortcuts.reducer,
