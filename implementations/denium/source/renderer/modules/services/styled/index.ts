@@ -36,6 +36,7 @@ const {
         InputSwitch: PluridInputSwitch,
         InputLine: PluridInputLine,
         Slider: PluridSlider,
+        Textline: PluridTextline,
     },
     typography: {
         Heading: PluridHeading,
@@ -177,6 +178,7 @@ export {
     PluridInputSwitch,
     PluridInputLine,
     PluridSlider,
+    PluridTextline,
 
     PluridHeading,
 

@@ -7,7 +7,7 @@
     // #region external
     import {
         ApplicationElectron,
-    } from '../../data/interfaces';
+    } from '~renderer-data/interfaces';
     // #endregion external
 // #endregion imports
 

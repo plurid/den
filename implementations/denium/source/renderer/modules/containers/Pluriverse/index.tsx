@@ -14,7 +14,7 @@
 
 
     // #region external
-    import Page from '../../components/Page';
+    import Page from '~renderer-components/Page';
     // #endregion external
 
 

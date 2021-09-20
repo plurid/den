@@ -5,8 +5,8 @@
 
 
     // #region external
-    import Pluriverse from '../../modules/containers/Pluriverse';
-    import TopBar from '../../modules/components/TopBar';
+    import Pluriverse from '~renderer-containers/Pluriverse';
+    import TopBar from '~renderer-components/TopBar';
     // #endregion external
 // #endregion imports
 

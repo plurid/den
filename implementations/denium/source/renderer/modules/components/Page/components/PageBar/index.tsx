@@ -5,11 +5,16 @@
     } from 'react';
 
     import {
-        universal,
-    } from '@plurid/plurid-ui-components-react';
-
-    import themes from '@plurid/plurid-themes';
+        plurid,
+    } from '@plurid/plurid-themes';
     // #endregion libraries
+
+
+    // #region external
+    import {
+        PluridTextline,
+    } from '~renderer-services/styled';
+    // #endregion external
 
 
     // #region internal
@@ -22,36 +27,37 @@
 
 
 // #region module
-const {
-    inputs: {
-        Textline: PluridTextline,
-    },
-} = universal;
-
-const theme = themes.plurid;
-
-interface PageBarOwnProperties {
+export interface PageBarOwnProperties {
     url: string;
     handleURL: any;
     handleURLChange: any;
 }
 
-const PageBar: React.FC<PageBarOwnProperties> = (properties) => {
+const PageBar: React.FC<PageBarOwnProperties> = (
+    properties,
+) => {
+    // #region properties
     const {
         url,
         handleURL,
         handleURLChange,
     } = properties;
+    // #endregion properties
 
+
+    // #region state
     // const [mouseOver, setMouseOver] = useState(false);
+    // #endregion state
 
+
+    // #region render
     return (
         <StyledPageBar
             // onMouseEnter={() => setMouseOver(true)}
             // onMouseLeave={() => setMouseOver(false)}
             // onMouseMove={() => !mouseOver ? setMouseOver(true) : undefined}
             // mouseOver={mouseOver}
-            theme={theme}
+            theme={plurid}
         >
             <div>
             </div>
@@ -67,6 +73,7 @@ const PageBar: React.FC<PageBarOwnProperties> = (properties) => {
             </div>
         </StyledPageBar>
     );
+    // #endregion render
 }
 // #endregion module
 

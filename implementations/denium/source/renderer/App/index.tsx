@@ -11,8 +11,8 @@
 
 
     // #region external
-    import reduxStore from '../modules/services/state/store';
-    import StateContext from '../modules/services/state/context';
+    import reduxStore from '~renderer-services/state/store';
+    import StateContext from '~renderer-services/state/context';
     // #endregion external
 
 

@@ -14,7 +14,7 @@
 
 
     // #region external
-    import PluriverseContext from '../../containers/Pluriverse/context';
+    import PluriverseContext from '~renderer-containers/Pluriverse/context';
     // #endregion external
 
 
