@@ -7,12 +7,29 @@
             "esnext"
         ],
 
+
         "baseUrl": ".",
         "paths": {
-            "~data/*": [
-                "./source/modules/data/*"
+            "~source/*": [
+                "./source/*"
+            ],
+            "~renderer-assets/*": [
+                "./source/renderer/modules/assets/*"
+            ],
+            "~renderer-data/*": [
+                "./source/renderer/modules/data/*"
+            ],
+            "~renderer-components/*": [
+                "./source/renderer/modules/components/*"
+            ],
+            "~renderer-containers/*": [
+                "./source/renderer/modules/containers/*"
+            ],
+            "~renderer-services/*": [
+                "./source/renderer/modules/services/*"
             ],
         },
+
 
         "allowJs": true,
         "skipLibCheck": true,
