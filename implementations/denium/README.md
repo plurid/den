@@ -17,7 +17,16 @@
     denium
 </h1>
 
-[Plurid](https://github.com/plurid/plurid)-based web browser implemented on Electron/Chromium.
+
+
+`den` can be used as a legacy network browser, viewing and interacting with `HTTP` web sites, and as a network relater following the `deserve` protocol.
+
+`denium` is [plurid](https://github.com/plurid/plurid)-based and implemented on Electron/Chromium.
+
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/plurid/den/master/about/presentation/example.png" height="600px">
+</p>
 
 
 

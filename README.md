@@ -22,6 +22,15 @@
 
 
 
+`den` can be used as a legacy network browser, viewing and interacting with `HTTP` web sites, and as a network relater following the `deserve` protocol.
+
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/plurid/den/master/about/presentation/example.png" height="600px">
+</p>
+
+
+
 + [Metaphysics](#metaphysics)
     + [From Browsers to Relaters](#from-browsers-to-relaters)
     + [Kill the User](#kill-the-user)
