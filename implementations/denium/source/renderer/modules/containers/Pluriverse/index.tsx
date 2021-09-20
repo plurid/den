@@ -4,6 +4,14 @@
         useState,
     } from 'react';
 
+    import { AnyAction } from 'redux';
+    import { connect } from 'react-redux';
+    import { ThunkDispatch } from 'redux-thunk';
+
+    import {
+        Theme,
+    } from '@plurid/plurid-themes';
+
     import {
         PluridApplication,
         PluridReactPlane,
@@ -15,10 +23,23 @@
 
     // #region external
     import Page from '~renderer-components/Page';
+
+    import { AppState } from '~renderer-services/state/store';
+    import StateContext from '~renderer-services/state/context';
+    import selectors from '~renderer-services/state/selectors';
+    // import actions from '~renderer-services/state/actions';
+
+    import {
+        StateSpaces,
+    } from '~renderer-services/state/modules/data/types';
     // #endregion external
 
 
     // #region internal
+    // import {
+    //     StyledPluriverse,
+    // } from './styled';
+
     import PluriverseContext from './context';
     // #endregion internal
 // #endregion imports
@@ -26,18 +47,52 @@
 
 
 // #region module
-const Pluriverse: React.FC<any> = () => {
+export interface PluriverseOwnProperties {
+}
+
+export interface PluriverseStateProperties {
+    stateGeneralTheme: Theme;
+    stateInteractionTheme: Theme;
+    stateSpaces: StateSpaces;
+}
+
+export interface PluriverseDispatchProperties {
+}
+
+export type PluriverseProperties =
+    & PluriverseOwnProperties
+    & PluriverseStateProperties
+    & PluriverseDispatchProperties;
+
+
+const Pluriverse: React.FC<PluriverseProperties> = (
+    properties,
+) => {
+    // #region properties
+    const {
+        // #region state
+        stateGeneralTheme,
+        // stateInteractionTheme,
+        stateSpaces,
+        // #endregion state
+    } = properties;
+
+    const space = stateSpaces['123'];
+    if (!space) {
+        return (<></>);
+    }
+    // #endregion properties
+
+
     // #region state
-    const [pages, setPages] = useState([
-        {
-            id: 'one',
-            path: 'https://google.com',
-        },
-        {
-            id: 'two',
-            path: 'https://plurid.com',
-        },
-    ]);
+    const [pages, setPages] = useState(
+        space.planes.map(plane => {
+            return {
+                id: plane.id,
+                path: plane.url,
+            };
+        }),
+    );
     // #endregion state
 
 
@@ -68,24 +123,25 @@ const Pluriverse: React.FC<any> = () => {
 
 
     // #region properties
-    const pluridPages: PluridReactPlane[] = [
-        {
-            route: 'https://www.google.com',
+    const pluridPages: PluridReactPlane[] = space.planes.map(plane => {
+        const {
+            id,
+            url,
+        } = plane;
+
+        return {
+            route: url,
             component: () => (
-                <Page id="one" />
+                <Page
+                    id={id}
+                />
             ),
-        },
-        {
-            route: 'https://plurid.com',
-            component: () => (
-                <Page id="two" />
-            ),
-        },
-    ];
+        };
+    });
 
     const pluridAppConfiguration: PluridPartialConfiguration = {
         global: {
-            theme: 'plurid',
+            theme: stateGeneralTheme.name as any,
         },
         space: {
             layout: {
@@ -102,10 +158,7 @@ const Pluriverse: React.FC<any> = () => {
         }
     };
 
-    const view = [
-        'https://www.google.com',
-        'https://plurid.com',
-    ];
+    const view = space.planes.map(plane => plane.url);
 
     const pageContext = {
         pages,
@@ -126,10 +179,35 @@ const Pluriverse: React.FC<any> = () => {
     );
     // #endregion render
 }
+
+
+const mapStateToProperties = (
+    state: AppState,
+): PluriverseStateProperties => ({
+    stateGeneralTheme: selectors.themes.getGeneralTheme(state),
+    stateInteractionTheme: selectors.themes.getInteractionTheme(state),
+    stateSpaces: selectors.data.getSpaces(state),
+});
+
+
+const mapDispatchToProperties = (
+    dispatch: ThunkDispatch<{}, {}, AnyAction>,
+): PluriverseDispatchProperties => ({
+});
+
+
+const ConnectedPluriverse = connect(
+    mapStateToProperties,
+    mapDispatchToProperties,
+    null,
+    {
+        context: StateContext,
+    },
+)(Pluriverse);
 // #endregion module
 
 
 
 // #region exports
-export default Pluriverse;
+export default ConnectedPluriverse;
 // #endregion exports

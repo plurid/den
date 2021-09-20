@@ -18,6 +18,7 @@
 // #region module
 const selectors = {
     notifications: notifications.selectors,
+    data: modules.data.selectors,
     owner: modules.owner.selectors,
     product: modules.product.selectors,
     // shortcuts: modules.shortcuts.selectors,

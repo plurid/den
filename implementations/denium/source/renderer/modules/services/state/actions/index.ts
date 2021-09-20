@@ -18,6 +18,7 @@
 // #region module
 const actions = {
     notifications: notifications.actions,
+    data: modules.data.actions,
     owner: modules.owner.actions,
     product: modules.product.actions,
     // shortcuts: modules.shortcuts.actions,

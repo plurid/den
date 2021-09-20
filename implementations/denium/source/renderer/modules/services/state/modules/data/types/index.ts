@@ -27,9 +27,10 @@ export interface ClearDataAction {
 }
 
 
+export type StateSpaces = Record<string, StateSpace | undefined>;
 
 export interface State {
-    spaces: Record<string, StateSpace | undefined>;
+    spaces: StateSpaces;
 }
 
 
