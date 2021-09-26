@@ -16,6 +16,14 @@ export const reducer = (
     action: Types.Actions,
 ): Types.State => {
     switch(action.type) {
+        case Types.ADD_SPACE:
+            return resolvers.addSpace(state, action);
+        case Types.REMOVE_SPACE:
+            return resolvers.removeSpace(state, action);
+        case Types.ADD_SPACE_PLANE:
+            return resolvers.addSpacePlane(state, action);
+        case Types.REMOVE_SPACE_PLANE:
+            return resolvers.removeSpacePlane(state, action);
         case Types.SET_DATA_FIELD:
             return resolvers.setDataField(state, action);
         case Types.CLEAR_DATA:

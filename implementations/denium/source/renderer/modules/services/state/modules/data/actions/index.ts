@@ -7,6 +7,43 @@
 
 
 // #region module
+const addSpace = (): Types.AddSpaceAction => {
+    return {
+        type: Types.ADD_SPACE,
+    };
+}
+
+
+const removeSpace = (
+    payload: Types.RemoveSpacePayload,
+): Types.RemoveSpaceAction => {
+    return {
+        type: Types.REMOVE_SPACE,
+        payload,
+    };
+}
+
+
+const addSpacePlane = (
+    payload: Types.AddSpacePlanePayload,
+): Types.AddSpacePlaneAction => {
+    return {
+        type: Types.ADD_SPACE_PLANE,
+        payload,
+    };
+}
+
+
+const removeSpacePlane = (
+    payload: Types.RemoveSpacePlanePayload,
+): Types.RemoveSpacePlaneAction => {
+    return {
+        type: Types.REMOVE_SPACE_PLANE,
+        payload,
+    };
+}
+
+
 const setDataField = (
     payload: Types.SetDataFieldPayload
 ): Types.SetDataFieldAction => {
@@ -27,6 +64,10 @@ const clearData = (): Types.ClearDataAction => {
 
 
 const actions = {
+    addSpace,
+    removeSpace,
+    addSpacePlane,
+    removeSpacePlane,
     setDataField,
     clearData,
 };
