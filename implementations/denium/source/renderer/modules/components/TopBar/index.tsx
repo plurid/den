@@ -4,10 +4,30 @@
         useState,
     } from 'react';
 
+    import { AnyAction } from 'redux';
+    import { connect } from 'react-redux';
+    import { ThunkDispatch } from 'redux-thunk';
+
+    import {
+        Theme,
+    } from '@plurid/plurid-themes';
+
     import {
         plurid,
     } from '@plurid/plurid-themes';
     // #endregion libraries
+
+
+    // #region external
+    import { AppState } from '~renderer-services/state/store';
+    import StateContext from '~renderer-services/state/context';
+    import selectors from '~renderer-services/state/selectors';
+    import actions from '~renderer-services/state/actions';
+
+    import {
+        StateSpaces,
+    } from '~renderer-services/state/modules/data/types';
+    // #endregion external
 
 
     // #region internal
@@ -20,7 +40,43 @@
 
 
 // #region module
-const TopBar: React.FC<any> = () => {
+export interface TopBarOwnProperties {
+}
+
+export interface TopBarStateProperties {
+    stateGeneralTheme: Theme;
+    stateInteractionTheme: Theme;
+    stateSpaces: StateSpaces;
+}
+
+export interface TopBarDispatchProperties {
+    dispatchAddSpace: typeof actions.data.addSpace;
+    dispatchAddSpacePlane: typeof actions.data.addSpacePlane;
+}
+
+export type TopBarProperties =
+    & TopBarOwnProperties
+    & TopBarStateProperties
+    & TopBarDispatchProperties;
+
+
+const TopBar: React.FC<TopBarProperties> = (
+    properties,
+) => {
+    // #region properties
+    const {
+        // #region state
+        stateSpaces,
+        // #endregion state
+
+        // #region dispatch
+        dispatchAddSpace,
+        dispatchAddSpacePlane,
+        // #endregion dispatch
+    } = properties;
+    // #endregion properties
+
+
     // #region state
     const [
         mouseOver,
@@ -38,14 +94,73 @@ const TopBar: React.FC<any> = () => {
             mouseOver={mouseOver}
             theme={plurid}
         >
+            {mouseOver && (
+                <div
+                    style={{
+                        display: 'flex',
+                        marginLeft: '6rem',
+                    }}
+                >
+                    <div
+                        onClick={() => dispatchAddSpace()}
+                    >
+                        add space
+                    </div>
+
+                    <div
+                        onClick={() => {
+                            if (stateSpaces['123']) {
+                                dispatchAddSpacePlane({
+                                    spaceID: stateSpaces['123'].id,
+                                });
+                            }
+                        }}
+                    >
+                        add space plane
+                    </div>
+                </div>
+            )}
         </StyledTopBar>
     );
     // #endregion render
 }
+
+
+const mapStateToProperties = (
+    state: AppState,
+): TopBarStateProperties => ({
+    stateGeneralTheme: selectors.themes.getGeneralTheme(state),
+    stateInteractionTheme: selectors.themes.getInteractionTheme(state),
+    stateSpaces: selectors.data.getSpaces(state),
+});
+
+
+const mapDispatchToProperties = (
+    dispatch: ThunkDispatch<{}, {}, AnyAction>,
+): TopBarDispatchProperties => ({
+    dispatchAddSpace: () => dispatch(
+        actions.data.addSpace(),
+    ),
+    dispatchAddSpacePlane: (
+        payload,
+    ) => dispatch(
+        actions.data.addSpacePlane(payload),
+    ),
+});
+
+
+const ConnectedTopBar = connect(
+    mapStateToProperties,
+    mapDispatchToProperties,
+    null,
+    {
+        context: StateContext,
+    },
+)(TopBar);
 // #endregion module
 
 
 
 // #region exports
-export default TopBar;
+export default ConnectedTopBar;
 // #endregion exports
