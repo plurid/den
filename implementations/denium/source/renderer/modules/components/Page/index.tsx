@@ -199,6 +199,7 @@ const Page: React.FC<PageProperties> = (
 
             {src && (
                 <webview
+                    key={src}
                     src={src}
                     ref={webviewElement}
                 />
