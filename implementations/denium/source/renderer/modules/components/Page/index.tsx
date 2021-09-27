@@ -24,7 +24,7 @@
     import { AppState } from '~renderer-services/state/store';
     import StateContext from '~renderer-services/state/context';
     import selectors from '~renderer-services/state/selectors';
-    // import actions from '~renderer-services/state/actions';
+    import actions from '~renderer-services/state/actions';
 
     import {
         StateSpaces,
@@ -56,6 +56,7 @@ export interface PageStateProperties {
 }
 
 export interface PageDispatchProperties {
+    dispatchSetPlaneField: typeof actions.data.setPlaneField;
 }
 
 export type PageProperties =
@@ -82,6 +83,10 @@ const Page: React.FC<PageProperties> = (
         stateGeneralTheme,
         stateSpaces,
         // #endregion state
+
+        // #region dispatch
+        dispatchSetPlaneField,
+        // #endregion dispatch
     } = properties;
 
     const spaceID = plurid.plane.parameters.spaceID;
@@ -134,15 +139,20 @@ const Page: React.FC<PageProperties> = (
     const handleURLChange = (
         event: React.KeyboardEvent<HTMLInputElement>,
     ) => {
+        let value = url;
+
         if (event.key === 'Enter') {
             const urlRE = /^https?:\/\//;
-            if (urlRE.test(url)) {
-                // updateURL(url, id);
-                return;
+            if (!urlRE.test(url)) {
+                value = 'https://' + url;
             }
 
-            const httpsURL = 'https://' + url;
-            // updateURL(httpsURL, id);
+            dispatchSetPlaneField({
+                spaceID,
+                planeID: id,
+                field: 'url',
+                value,
+            });
         }
     }
     // #endregion handlers
@@ -211,6 +221,11 @@ const mapStateToProperties = (
 const mapDispatchToProperties = (
     dispatch: ThunkDispatch<{}, {}, AnyAction>,
 ): PageDispatchProperties => ({
+    dispatchSetPlaneField: (
+        payload,
+    ) => dispatch(
+        actions.data.setPlaneField(payload),
+    ),
 });
 
 
