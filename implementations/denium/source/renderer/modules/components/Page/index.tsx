@@ -199,7 +199,7 @@ const Page: React.FC<PageProperties> = (
 
             {src && (
                 <webview
-                    key={src}
+                    key={`${spaceID}/${id}`}
                     src={src}
                     ref={webviewElement}
                 />
