@@ -2,25 +2,40 @@
     // #region libraries
     import React, {
         useRef,
-        useContext,
         useState,
         useEffect,
     } from 'react';
 
-    // import {
-    //     remote,
-    // } from 'electron';
+    import { AnyAction } from 'redux';
+    import { connect } from 'react-redux';
+    import { ThunkDispatch } from 'redux-thunk';
+
+    import {
+        Theme,
+    } from '@plurid/plurid-themes';
+
+    import {
+        PluridPlaneComponentProperty,
+    } from '@plurid/plurid-react';
     // #endregion libraries
 
 
     // #region external
-    import PluriverseContext from '~renderer-containers/Pluriverse/context';
+    import { AppState } from '~renderer-services/state/store';
+    import StateContext from '~renderer-services/state/context';
+    import selectors from '~renderer-services/state/selectors';
+    // import actions from '~renderer-services/state/actions';
+
+    import {
+        StateSpaces,
+    } from '~renderer-services/state/modules/data/types';
     // #endregion external
 
 
     // #region internal
     import {
         StyledPage,
+        StyledNoWebview,
     } from './styled';
 
     import PageBar from './components/PageBar';
@@ -30,46 +45,75 @@
 
 
 // #region module
-export interface PageProperties {
-    id: string;
+export interface PageOwnProperties {
+    plurid: PluridPlaneComponentProperty;
 }
+
+export interface PageStateProperties {
+    stateGeneralTheme: Theme;
+    stateInteractionTheme: Theme;
+    stateSpaces: StateSpaces;
+}
+
+export interface PageDispatchProperties {
+}
+
+export type PageProperties =
+    & PageOwnProperties
+    & PageStateProperties
+    & PageDispatchProperties;
+
 
 const Page: React.FC<PageProperties> = (
     properties,
 ) => {
-    // #region context
-    const context: any = useContext(PluriverseContext);
-
-    const {
-        pages,
-        updateURL,
-    } = context;
-    // #endregion context
-
-
-    // #region references
-    const webviewElement = useRef<HTMLWebViewElement>(null);
-    // #endregion references
-
-
     // #region properties
     const {
-        id,
+        // #region required
+            // #region values
+            plurid,
+            // #endregion values
+
+            // #region methods
+            // #endregion methods
+        // #endregion required
+
+        // #region state
+        stateGeneralTheme,
+        stateSpaces,
+        // #endregion state
     } = properties;
 
-    const page = pages.find((page: any) => page.id === id);
-    if (!page) {
+    const spaceID = plurid.plane.parameters.spaceID;
+    const id = plurid.plane.parameters.planeID;
+
+    const space = stateSpaces[spaceID];
+    if (!space) {
+        return (
+            <div>
+                space not found
+            </div>
+        );
+    }
+
+    const plane = space.planes.find(plane => plane.id === id);
+    if (!plane) {
         return (
             <div>
                 <h4>
-                    Nothing Found.
+                    plane not found
                 </h4>
             </div>
         );
     }
 
-    const src = page.path;
+    const src = plane.url;
     // #endregion properties
+
+
+    // #region references
+    const webviewElement = useRef<HTMLWebViewElement>(null);
+    // #endregion references
 
 
     // #region state
@@ -84,7 +128,7 @@ const Page: React.FC<PageProperties> = (
     const handleURL = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
-        setURL(event.target.value)
+        setURL(event.target.value);
     }
 
     const handleURLChange = (
@@ -93,12 +137,12 @@ const Page: React.FC<PageProperties> = (
         if (event.key === 'Enter') {
             const urlRE = /^https?:\/\//;
             if (urlRE.test(url)) {
-                updateURL(url, id);
+                // updateURL(url, id);
                 return;
             }
 
             const httpsURL = 'https://' + url;
-            updateURL(httpsURL, id);
+            // updateURL(httpsURL, id);
         }
     }
     // #endregion handlers
@@ -127,25 +171,61 @@ const Page: React.FC<PageProperties> = (
 
     // #region render
     return (
-        <StyledPage>
+        <StyledPage
+            theme={stateGeneralTheme}
+        >
             <PageBar
                 url={url}
                 handleURL={handleURL}
                 handleURLChange={handleURLChange}
             />
 
-            <webview
-                src={src}
-                ref={webviewElement}
-            />
+
+            {!src && (
+                <StyledNoWebview>
+                    search the network
+                </StyledNoWebview>
+            )}
+
+            {src && (
+                <webview
+                    src={src}
+                    ref={webviewElement}
+                />
+            )}
         </StyledPage>
     );
     // #endregion render
 }
+
+
+const mapStateToProperties = (
+    state: AppState,
+): PageStateProperties => ({
+    stateGeneralTheme: selectors.themes.getGeneralTheme(state),
+    stateInteractionTheme: selectors.themes.getInteractionTheme(state),
+    stateSpaces: selectors.data.getSpaces(state),
+});
+
+
+const mapDispatchToProperties = (
+    dispatch: ThunkDispatch<{}, {}, AnyAction>,
+): PageDispatchProperties => ({
+});
+
+
+const ConnectedPage = connect(
+    mapStateToProperties,
+    mapDispatchToProperties,
+    null,
+    {
+        context: StateContext,
+    },
+)(Page);
 // #endregion module
 
 
 
 // #region exports
-export default Page;
+export default ConnectedPage;
 // #endregion exports

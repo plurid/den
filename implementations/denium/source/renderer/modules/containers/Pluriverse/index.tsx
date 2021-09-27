@@ -1,8 +1,6 @@
 // #region imports
     // #region libraries
-    import React, {
-        useState,
-    } from 'react';
+    import React from 'react';
 
     import { AnyAction } from 'redux';
     import { connect } from 'react-redux';
@@ -39,8 +37,6 @@
     // import {
     //     StyledPluriverse,
     // } from './styled';
-
-    import PluriverseContext from './context';
     // #endregion internal
 // #endregion imports
 
@@ -84,18 +80,6 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     // #endregion properties
 
 
-    // #region state
-    const [pages, setPages] = useState(
-        space.planes.map(plane => {
-            return {
-                id: plane.id,
-                path: plane.url,
-            };
-        }),
-    );
-    // #endregion state
-
-
     // #region handlers
     // const pathbarOnChange = (
     //     event: any,
@@ -104,40 +88,31 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     //     updateURL(event.target.value, id);
     // }
 
-    const updateURL = (
-        value: string,
-        id: string,
-    ) => {
-        const updatedPages = pages.map(page => {
-            if (page.id === id) {
-                return {
-                    ...page,
-                    path: value,
-                };
-            }
-            return {...page};
-        });
-        setPages(updatedPages);
-    }
+    // const updateURL = (
+    //     value: string,
+    //     id: string,
+    // ) => {
+    //     const updatedPages = pages.map(page => {
+    //         if (page.id === id) {
+    //             return {
+    //                 ...page,
+    //                 path: value,
+    //             };
+    //         }
+    //         return {...page};
+    //     });
+    //     setPages(updatedPages);
+    // }
     // #endregion handlers
 
 
     // #region properties
-    const pluridPages: PluridReactPlane[] = space.planes.map(plane => {
-        const {
-            id,
-            url,
-        } = plane;
-
-        return {
-            route: url,
-            component: () => (
-                <Page
-                    id={id}
-                />
-            ),
-        };
-    });
+    const pluridPages: PluridReactPlane[] = [
+        {
+            route: `/web/:spaceID/:planeID`,
+            component: Page,
+        },
+    ];
 
     const pluridAppConfiguration: PluridPartialConfiguration = {
         global: {
@@ -153,17 +128,14 @@ const Pluriverse: React.FC<PluriverseProperties> = (
                 opacity: 0,
                 controls: {
                     show: false,
-                }
-            }
-        }
+                },
+            },
+        },
     };
 
-    const view = space.planes.map(plane => plane.url);
-
-    const pageContext = {
-        pages,
-        updateURL,
-    };
+    const view = space.planes.map(plane => {
+        return `/web/${space.id}/${plane.id}`;
+    });
     // #endregion properties
 
 
@@ -173,8 +145,6 @@ const Pluriverse: React.FC<PluriverseProperties> = (
             planes={pluridPages}
             view={view}
             configuration={pluridAppConfiguration}
-            planeContext={PluriverseContext}
-            planeContextValue={pageContext}
         />
     );
     // #endregion render
