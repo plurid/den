@@ -124,6 +124,50 @@ const removeSpacePlane = (
 }
 
 
+const setPlaneField = (
+    state: Types.State,
+    action: Types.SetPlaneFieldAction,
+): Types.State => {
+    const newState = objects.clone(state, 'any');
+
+    const {
+        spaceID,
+        planeID,
+        field,
+        value,
+    } = action.payload;
+
+    const space = newState.spaces[spaceID];
+    if (!space) {
+        return {
+            ...newState,
+        };
+    }
+
+    const planes = space.planes.map(plane => {
+        if (plane.id === planeID) {
+            const planeData = {
+                ...plane,
+            };
+            planeData[field] = value;
+            return {
+                ...planeData,
+            };
+        }
+
+        return {
+            ...plane,
+        };
+    });
+
+    (newState.spaces[spaceID] as StateSpace).planes = planes;
+
+    return {
+        ...newState,
+    };
+}
+
+
 const setDataField = (
     state: Types.State,
     action: Types.SetDataFieldAction,
@@ -158,6 +202,7 @@ const resolvers = {
     removeSpace,
     addSpacePlane,
     removeSpacePlane,
+    setPlaneField,
     setDataField,
     clearData,
 };

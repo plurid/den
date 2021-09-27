@@ -2,6 +2,7 @@
     // #region external
     import {
         StateSpace,
+        StateSpacePlane,
     } from '~renderer-data/interfaces';
     // #endregion external
 // #endregion imports
@@ -46,6 +47,19 @@ export interface RemoveSpacePlaneAction {
 }
 
 
+export const SET_PLANE_FIELD = 'SET_PLANE_FIELD';
+export interface SetPlaneFieldPayload<T = any> {
+    spaceID: string;
+    planeID: string;
+    field: keyof StateSpacePlane;
+    value: T;
+}
+export interface SetPlaneFieldAction<T = any> {
+    type: typeof SET_PLANE_FIELD;
+    payload: SetPlaneFieldPayload<T>;
+}
+
+
 export const SET_DATA_FIELD = 'SET_DATA_FIELD';
 export interface SetDataFieldPayload<T = any> {
     field: string;
@@ -76,6 +90,7 @@ export type Actions =
     | RemoveSpaceAction
     | AddSpacePlaneAction
     | RemoveSpacePlaneAction
+    | SetPlaneFieldAction
     | SetDataFieldAction
     | ClearDataAction;
 // #endregion module

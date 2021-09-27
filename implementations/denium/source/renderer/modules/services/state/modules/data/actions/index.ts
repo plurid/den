@@ -44,6 +44,16 @@ const removeSpacePlane = (
 }
 
 
+const setPlaneField = (
+    payload: Types.SetPlaneFieldPayload
+): Types.SetPlaneFieldAction => {
+    return {
+        type: Types.SET_PLANE_FIELD,
+        payload,
+    };
+}
+
+
 const setDataField = (
     payload: Types.SetDataFieldPayload
 ): Types.SetDataFieldAction => {
@@ -68,6 +78,7 @@ const actions = {
     removeSpace,
     addSpacePlane,
     removeSpacePlane,
+    setPlaneField,
     setDataField,
     clearData,
 };

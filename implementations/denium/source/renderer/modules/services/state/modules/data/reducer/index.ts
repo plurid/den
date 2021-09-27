@@ -24,6 +24,8 @@ export const reducer = (
             return resolvers.addSpacePlane(state, action);
         case Types.REMOVE_SPACE_PLANE:
             return resolvers.removeSpacePlane(state, action);
+        case Types.SET_PLANE_FIELD:
+            return resolvers.setPlaneField(state, action);
         case Types.SET_DATA_FIELD:
             return resolvers.setDataField(state, action);
         case Types.CLEAR_DATA:
