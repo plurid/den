@@ -74,9 +74,12 @@ const PageBar: React.FC<PageBarOwnProperties> = (
     return (
         <StyledPageBar
             onMouseEnter={() => setMouseOver(true)}
-            onMouseLeave={() => setMouseOver(false)}
-            // onMouseMove={() => !mouseOver ? setMouseOver(true) : undefined}
-            // mouseOver={mouseOver}
+            onMouseLeave={() => {
+                setTimeout(() => {
+                    setMouseOver(false);
+                }, 700);
+            }}
+            onMouseMove={() => !mouseOver ? setMouseOver(true) : undefined}
             theme={plurid}
         >
             <div />
