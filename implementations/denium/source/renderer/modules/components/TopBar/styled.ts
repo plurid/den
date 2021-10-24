@@ -23,4 +23,23 @@ export const StyledTopBar: any = styled.div`
         return 'transparent';
     }};
 `;
+
+
+export const StyledTopBarInteraction = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 6rem;
+`;
+
+
+export const StyledSpaces = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+
+export const StyledSpace = styled.div`
+    padding: 0 0.7rem;
+`;
 // #endregion module

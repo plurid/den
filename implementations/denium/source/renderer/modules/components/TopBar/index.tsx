@@ -15,6 +15,10 @@
     import {
         plurid,
     } from '@plurid/plurid-themes';
+
+    import {
+        PluridIconAdd,
+    } from '@plurid/plurid-icons-react';
     // #endregion libraries
 
 
@@ -33,6 +37,9 @@
     // #region internal
     import {
         StyledTopBar,
+        StyledTopBarInteraction,
+        StyledSpaces,
+        StyledSpace,
     } from './styled';
     // #endregion internal
 // #endregion imports
@@ -51,7 +58,7 @@ export interface TopBarStateProperties {
 
 export interface TopBarDispatchProperties {
     dispatchAddSpace: typeof actions.data.addSpace;
-    dispatchAddSpacePlane: typeof actions.data.addSpacePlane;
+    // dispatchAddSpacePlane: typeof actions.data.addSpacePlane;
 }
 
 export type TopBarProperties =
@@ -71,7 +78,7 @@ const TopBar: React.FC<TopBarProperties> = (
 
         // #region dispatch
         dispatchAddSpace,
-        dispatchAddSpacePlane,
+        // dispatchAddSpacePlane,
         // #endregion dispatch
     } = properties;
     // #endregion properties
@@ -94,32 +101,57 @@ const TopBar: React.FC<TopBarProperties> = (
             mouseOver={mouseOver}
             theme={plurid}
         >
-            {mouseOver && (
-                <div
-                    style={{
-                        display: 'flex',
-                        marginLeft: '6rem',
-                    }}
-                >
-                    <div
-                        onClick={() => dispatchAddSpace()}
-                    >
-                        add space
-                    </div>
+            <StyledTopBarInteraction>
+                {mouseOver && (
+                    <>
+                        <StyledSpaces>
+                            {Object.values(stateSpaces).map((space) => {
+                                if (!space) {
+                                    return;
+                                }
 
-                    <div
-                        onClick={() => {
-                            if (stateSpaces['123']) {
-                                dispatchAddSpacePlane({
-                                    spaceID: stateSpaces['123'].id,
-                                });
-                            }
-                        }}
-                    >
-                        add space plane
-                    </div>
-                </div>
-            )}
+                                const {
+                                    id,
+                                    title,
+                                } = space;
+
+                                return (
+                                    <StyledSpace
+                                        key={`space-${id}`}
+                                    >
+                                        {title || 'New Space'}
+                                    </StyledSpace>
+                                );
+                            })}
+                        </StyledSpaces>
+
+                        <PluridIconAdd
+                            atClick={() => {
+                                dispatchAddSpace();
+                            }}
+                            title="Add Space"
+                        />
+
+                        {/* <div
+                            style={{
+                                display: 'flex',
+                            }}
+                        >
+                            <div
+                                onClick={() => {
+                                    if (stateSpaces['123']) {
+                                        dispatchAddSpacePlane({
+                                            spaceID: stateSpaces['123'].id,
+                                        });
+                                    }
+                                }}
+                            >
+                                add space plane
+                            </div>
+                        </div> */}
+                    </>
+                )}
+            </StyledTopBarInteraction>
         </StyledTopBar>
     );
     // #endregion render
@@ -141,11 +173,11 @@ const mapDispatchToProperties = (
     dispatchAddSpace: () => dispatch(
         actions.data.addSpace(),
     ),
-    dispatchAddSpacePlane: (
-        payload,
-    ) => dispatch(
-        actions.data.addSpacePlane(payload),
-    ),
+    // dispatchAddSpacePlane: (
+    //     payload,
+    // ) => dispatch(
+    //     actions.data.addSpacePlane(payload),
+    // ),
 });
 
 
