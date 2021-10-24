@@ -25,13 +25,23 @@
 
 
 // #region module
+export const protocols = [
+    'https',
+    'http',
+    'den',
+    'gemini',
+];
+
+
 export interface ProtocolSelectorProperties {
     // #region required
         // #region values
+        protocol: string;
         theme: Theme;
         // #endregion values
 
         // #region methods
+        changeProtocol: (protocol: string) => void;
         // #endregion methods
     // #endregion required
 }
@@ -43,10 +53,12 @@ const ProtocolSelector: React.FC<ProtocolSelectorProperties> = (
     const {
         // #region required
             // #region values
+            protocol,
             theme,
             // #endregion values
 
             // #region methods
+            changeProtocol,
             // #endregion methods
         // #endregion required
     } = properties;
@@ -59,15 +71,19 @@ const ProtocolSelector: React.FC<ProtocolSelectorProperties> = (
             theme={theme}
         >
             <PluridDropdown
-                selected="https"
-                selectables={[
-                    'https',
-                    'http',
-                    'den',
-                    'gemini',
-                ]}
-                atSelect={() => {}}
+                selected={protocol}
+                selectables={protocols}
+
+                atSelect={(selected) => {
+                    if (typeof selected === 'string') {
+                        changeProtocol(selected);
+                    }
+                }}
+
                 width={65}
+                style={{
+                    fontSize: '0.8rem',
+                }}
             />
         </StyledProtocolSelector>
     );

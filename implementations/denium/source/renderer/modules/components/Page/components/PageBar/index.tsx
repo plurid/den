@@ -37,7 +37,7 @@ const protocolless = (
         .replace(/^https?:\/\//g, '')
         .replace(/^den:\/\//g, '')
         .replace(/^gemini:\/\//g, '')
-        .replace(/^www/, '')
+        .replace(/^www\./, '')
         .replace(/\/$/, '');
 
     return cleanURL;
@@ -81,7 +81,10 @@ const PageBar: React.FC<PageBarOwnProperties> = (
 
             <StyledPageLocation>
                 <ProtocolSelector
+                    protocol="https"
                     theme={plurid}
+
+                    changeProtocol={(protocol) => {}}
                 />
 
                 <PluridTextline
