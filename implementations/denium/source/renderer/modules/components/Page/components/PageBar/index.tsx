@@ -63,30 +63,33 @@ const PageBar: React.FC<PageBarOwnProperties> = (
 
 
     // #region state
-    // const [mouseOver, setMouseOver] = useState(false);
+    const [
+        mouseOver,
+        setMouseOver,
+    ] = useState(false);
     // #endregion state
 
 
     // #region render
     return (
         <StyledPageBar
-            // onMouseEnter={() => setMouseOver(true)}
-            // onMouseLeave={() => setMouseOver(false)}
+            onMouseEnter={() => setMouseOver(true)}
+            onMouseLeave={() => setMouseOver(false)}
             // onMouseMove={() => !mouseOver ? setMouseOver(true) : undefined}
             // mouseOver={mouseOver}
             theme={plurid}
         >
-            <div>
-            </div>
+            <div />
+
+            <ProtocolSelector
+                show={mouseOver}
+                protocol="https"
+                theme={plurid}
+
+                changeProtocol={(protocol) => {}}
+            />
 
             <StyledPageLocation>
-                <ProtocolSelector
-                    protocol="https"
-                    theme={plurid}
-
-                    changeProtocol={(protocol) => {}}
-                />
-
                 <PluridTextline
                     text={protocolless(url)}
                     atChange={handleURL}
@@ -95,8 +98,9 @@ const PageBar: React.FC<PageBarOwnProperties> = (
                 />
             </StyledPageLocation>
 
-            <div>
-            </div>
+            <div/>
+
+            <div/>
         </StyledPageBar>
     );
     // #endregion render

@@ -36,6 +36,7 @@ export const protocols = [
 export interface ProtocolSelectorProperties {
     // #region required
         // #region values
+        show: boolean;
         protocol: string;
         theme: Theme;
         // #endregion values
@@ -53,6 +54,7 @@ const ProtocolSelector: React.FC<ProtocolSelectorProperties> = (
     const {
         // #region required
             // #region values
+            show,
             protocol,
             theme,
             // #endregion values
@@ -70,21 +72,22 @@ const ProtocolSelector: React.FC<ProtocolSelectorProperties> = (
         <StyledProtocolSelector
             theme={theme}
         >
-            <PluridDropdown
-                selected={protocol}
-                selectables={protocols}
+            {show && (
+                <PluridDropdown
+                    selected={protocol}
+                    selectables={protocols}
 
-                atSelect={(selected) => {
-                    if (typeof selected === 'string') {
-                        changeProtocol(selected);
-                    }
-                }}
-
-                width={65}
-                style={{
-                    fontSize: '0.8rem',
-                }}
-            />
+                    atSelect={(selected) => {
+                        if (typeof selected === 'string') {
+                            changeProtocol(selected);
+                        }
+                    }}
+                    width={65}
+                    style={{
+                        fontSize: '0.8rem',
+                    }}
+                />
+            )}
         </StyledProtocolSelector>
     );
     // #endregion render

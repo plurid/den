@@ -16,6 +16,7 @@ export interface IStyledProtocolSelector {
 }
 
 export const StyledProtocolSelector = styled.div<IStyledProtocolSelector>`
-    margin-right: 0.7rem;
+    padding-right: 0.7rem;
+    width: 70px;
 `;
 // #region module

@@ -118,11 +118,11 @@ const Pluriverse: React.FC<PluriverseProperties> = (
         global: {
             theme: stateGeneralTheme.name as any,
         },
-        space: {
-            layout: {
-                type: SPACE_LAYOUT.ZIG_ZAG,
-            },
-        },
+        // space: {
+        //     layout: {
+        //         type: SPACE_LAYOUT.ZIG_ZAG,
+        //     },
+        // },
         elements: {
             plane: {
                 opacity: 0,
