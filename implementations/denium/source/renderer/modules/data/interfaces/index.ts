@@ -18,6 +18,7 @@ export interface StateSpacePlane {
 
 export interface StateSpace {
     id: string;
+    title: string;
     planes: StateSpacePlane[];
 }
 // #endregion exports

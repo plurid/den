@@ -10,6 +10,7 @@
 const mockSpaces = {
     '123': {
         id: '123',
+        title: 'New Space',
         planes: [
             {
                 id: '1234',
