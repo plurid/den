@@ -8,7 +8,7 @@
 // #region module
 export const SET_VIEW = 'SET_VIEW';
 export interface SetViewPayload {
-    type: string;
+    type: keyof State;
     data: any;
 }
 export interface SetViewAction {
@@ -36,6 +36,7 @@ export interface State {
     general: string;
     loading: boolean;
     cleanMode: boolean;
+    activeSpace: string;
 }
 
 

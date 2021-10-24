@@ -11,11 +11,13 @@
 // #region module
 const getGeneralView = (state: AppState) => state.views.general;
 const getCleanMode = (state: AppState) => state.views.cleanMode;
+const getActiveSpace = (state: AppState) => state.views.activeSpace;
 
 
 const selectors = {
     getGeneralView,
     getCleanMode,
+    getActiveSpace,
 };
 // #endregion module
 

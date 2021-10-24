@@ -39,7 +39,25 @@ export const StyledSpaces = styled.div`
 `;
 
 
-export const StyledSpace = styled.div`
-    padding: 0 0.7rem;
+
+export interface IStyledSpace {
+    selected: boolean
+}
+
+export const StyledSpace = styled.div<IStyledSpace>`
+    padding: 0.5rem;
+    font-size: 0.9rem;
+
+    border-bottom: ${
+        ({
+            selected,
+        }) => {
+            if (selected) {
+                return '1px solid white';
+            }
+
+            return '1px solid transparent';
+        }
+    };
 `;
 // #endregion module

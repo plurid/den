@@ -11,6 +11,7 @@ export const initialState: Types.State = {
     general: '/',
     loading: false,
     cleanMode: false,
+    activeSpace: '',
 };
 // #endregion module
 

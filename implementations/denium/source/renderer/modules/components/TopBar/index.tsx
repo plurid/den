@@ -54,11 +54,13 @@ export interface TopBarStateProperties {
     stateGeneralTheme: Theme;
     stateInteractionTheme: Theme;
     stateSpaces: StateSpaces;
+    stateActiveSpace: string;
 }
 
 export interface TopBarDispatchProperties {
     dispatchAddSpace: typeof actions.data.addSpace;
     // dispatchAddSpacePlane: typeof actions.data.addSpacePlane;
+    dispatchSetView: typeof actions.views.setView;
 }
 
 export type TopBarProperties =
@@ -74,11 +76,13 @@ const TopBar: React.FC<TopBarProperties> = (
     const {
         // #region state
         stateSpaces,
+        stateActiveSpace,
         // #endregion state
 
         // #region dispatch
         dispatchAddSpace,
         // dispatchAddSpacePlane,
+        dispatchSetView,
         // #endregion dispatch
     } = properties;
     // #endregion properties
@@ -102,7 +106,7 @@ const TopBar: React.FC<TopBarProperties> = (
             theme={plurid}
         >
             <StyledTopBarInteraction>
-                {mouseOver && (
+                {/* {mouseOver && ( */}
                     <>
                         <StyledSpaces>
                             {Object.values(stateSpaces).map((space) => {
@@ -118,6 +122,13 @@ const TopBar: React.FC<TopBarProperties> = (
                                 return (
                                     <StyledSpace
                                         key={`space-${id}`}
+                                        selected={id === stateActiveSpace}
+                                        onClick={() => {
+                                            dispatchSetView({
+                                                type: 'activeSpace',
+                                                data: id,
+                                            });
+                                        }}
                                     >
                                         {title || 'New Space'}
                                     </StyledSpace>
@@ -150,7 +161,7 @@ const TopBar: React.FC<TopBarProperties> = (
                             </div>
                         </div> */}
                     </>
-                )}
+                {/* )} */}
             </StyledTopBarInteraction>
         </StyledTopBar>
     );
@@ -164,6 +175,7 @@ const mapStateToProperties = (
     stateGeneralTheme: selectors.themes.getGeneralTheme(state),
     stateInteractionTheme: selectors.themes.getInteractionTheme(state),
     stateSpaces: selectors.data.getSpaces(state),
+    stateActiveSpace: selectors.views.getActiveSpace(state),
 });
 
 
@@ -178,6 +190,11 @@ const mapDispatchToProperties = (
     // ) => dispatch(
     //     actions.data.addSpacePlane(payload),
     // ),
+    dispatchSetView: (
+        payload,
+    ) => dispatch(
+        actions.views.setView(payload),
+    ),
 });
 
 
