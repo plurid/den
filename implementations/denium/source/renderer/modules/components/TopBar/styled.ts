@@ -45,6 +45,8 @@ export interface IStyledSpace {
 }
 
 export const StyledSpace = styled.div<IStyledSpace>`
+    -webkit-app-region: no-drag;
+
     padding: 0.5rem;
     font-size: 0.9rem;
 
