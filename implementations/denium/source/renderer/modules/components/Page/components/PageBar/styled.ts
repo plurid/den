@@ -17,4 +17,10 @@ export const StyledPageBar: any = styled.div`
         return props.theme.backgroundColorDark;
     }};
 `;
+
+
+export const StyledPageLocation = styled.div`
+    display: flex;
+    align-items: center;
+`;
 // #endregion module

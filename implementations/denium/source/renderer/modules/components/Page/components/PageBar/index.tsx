@@ -20,13 +20,30 @@
     // #region internal
     import {
         StyledPageBar,
+        StyledPageLocation,
     } from './styled';
+
+    import ProtocolSelector from './ProtocolSelector';
     // #endregion internal
 // #endregion imports
 
 
 
 // #region module
+const protocolless = (
+    url: string,
+) => {
+    let cleanURL = url
+        .replace(/^https?:\/\//g, '')
+        .replace(/^den:\/\//g, '')
+        .replace(/^gemini:\/\//g, '')
+        .replace(/^www/, '')
+        .replace(/\/$/, '');
+
+    return cleanURL;
+}
+
+
 export interface PageBarOwnProperties {
     url: string;
     handleURL: any;
@@ -62,12 +79,18 @@ const PageBar: React.FC<PageBarOwnProperties> = (
             <div>
             </div>
 
-            <PluridTextline
-                text={url}
-                atChange={handleURL}
-                atKeyDown={handleURLChange}
-                enterAtClick={() => {}}
-            />
+            <StyledPageLocation>
+                <ProtocolSelector
+                    theme={plurid}
+                />
+
+                <PluridTextline
+                    text={protocolless(url)}
+                    atChange={handleURL}
+                    atKeyDown={handleURLChange}
+                    enterAtClick={() => {}}
+                />
+            </StyledPageLocation>
 
             <div>
             </div>
