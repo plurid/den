@@ -100,13 +100,17 @@ const TopBar: React.FC<TopBarProperties> = (
     return (
         <StyledTopBar
             onMouseEnter={() => setMouseOver(true)}
-            onMouseLeave={() => setMouseOver(false)}
+            onMouseLeave={() => {
+                setTimeout(() => {
+                    setMouseOver(false);
+                }, 700);
+            }}
             onMouseMove={() => !mouseOver ? setMouseOver(true) : undefined}
             mouseOver={mouseOver}
             theme={plurid}
         >
             <StyledTopBarInteraction>
-                {/* {mouseOver && ( */}
+                {mouseOver && (
                     <>
                         <StyledSpaces>
                             {Object.values(stateSpaces).map((space) => {
@@ -161,7 +165,7 @@ const TopBar: React.FC<TopBarProperties> = (
                             </div>
                         </div> */}
                     </>
-                {/* )} */}
+                )}
             </StyledTopBarInteraction>
         </StyledTopBar>
     );
