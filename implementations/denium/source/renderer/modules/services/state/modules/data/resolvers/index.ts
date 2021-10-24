@@ -34,6 +34,7 @@ const addSpace = (
     const newSpaceID = uuid.generate();
     const newSpace: StateSpace = {
         id: newSpaceID,
+        title: 'New Space',
         planes: [],
     };
 
