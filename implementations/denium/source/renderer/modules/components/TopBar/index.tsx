@@ -103,6 +103,19 @@ const TopBar: React.FC<TopBarProperties> = (
     // #endregion references
 
 
+    // #region state
+    const [
+        mouseOver,
+        setMouseOver,
+    ] = useState(false);
+
+    const [
+        showSettings,
+        setShowSettings,
+    ] = useState(false);
+    // #endregion state
+
+
     // #region handlers
     const onMouseEnter = () => {
         setMouseOver(true);
@@ -127,19 +140,6 @@ const TopBar: React.FC<TopBarProperties> = (
         }
     }
     // #endregion handlers
-
-
-    // #region state
-    const [
-        mouseOver,
-        setMouseOver,
-    ] = useState(false);
-
-    const [
-        showSettings,
-        setShowSettings,
-    ] = useState(false);
-    // #endregion state
 
 
     // #region render
