@@ -1,6 +1,8 @@
 // #region imports
     // #region libraries
-    import React from 'react';
+    import React, {
+        useEffect,
+    } from 'react';
 
     import { AnyAction } from 'redux';
     import { connect } from 'react-redux';
@@ -14,7 +16,7 @@
         PluridApplication,
         PluridReactPlane,
         PluridPartialConfiguration,
-        SPACE_LAYOUT,
+        // SPACE_LAYOUT,
     } from '@plurid/plurid-react';
     // #endregion libraries
 
@@ -86,26 +88,6 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     } = properties;
 
     const space = stateSpaces[stateActiveSpace];
-    if (!space) {
-        if (Object.keys(stateSpaces).length === 0) {
-            dispatchAddSpace();
-            return (<></>);
-        }
-
-        const space = Object.values(stateSpaces)[0];
-        if (!space) {
-            return (<></>);
-        }
-
-        dispatchSetView({
-            type: 'activeSpace',
-            data: space.id,
-        });
-        dispatchAddSpacePlane({
-            spaceID: space.id,
-        });
-        return (<></>);
-    }
     // #endregion properties
 
 
@@ -162,13 +144,47 @@ const Pluriverse: React.FC<PluriverseProperties> = (
         },
     };
 
-    const view = space.planes.map(plane => {
+    const view = space?.planes.map(plane => {
         return `/web/${space.id}/${plane.id}`;
-    });
+    }) || [];
     // #endregion properties
 
 
+    // #region effects
+    useEffect(() => {
+        if (!space) {
+            if (Object.keys(stateSpaces).length === 0) {
+                dispatchAddSpace();
+                return;
+            }
+
+            const space = Object.values(stateSpaces)[0];
+            if (!space) {
+                return;
+            }
+
+            dispatchSetView({
+                type: 'activeSpace',
+                data: space.id,
+            });
+            dispatchAddSpacePlane({
+                spaceID: space.id,
+            });
+        }
+    }, [
+        space,
+        stateSpaces,
+    ]);
+    // #endregion effects
+
+
     // #region render
+    if (!space) {
+        return (
+            <></>
+        );
+    }
+
     return (
         <StyledPluriverse>
             <PluridApplication
