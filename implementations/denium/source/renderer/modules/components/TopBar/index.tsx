@@ -189,11 +189,6 @@ const mapDispatchToProperties = (
     dispatchAddSpace: () => dispatch(
         actions.data.addSpace(),
     ),
-    // dispatchAddSpacePlane: (
-    //     payload,
-    // ) => dispatch(
-    //     actions.data.addSpacePlane(payload),
-    // ),
     dispatchSetView: (
         payload,
     ) => dispatch(

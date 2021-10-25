@@ -10,6 +10,7 @@
 
     import {
         universal,
+        pluridal,
     } from '@plurid/plurid-ui-components-react';
     // #endregion libraries
 // #endregion imports
@@ -43,6 +44,12 @@ const {
     },
 } = universal;
 
+
+const {
+    toolbars: {
+        ToolbarSpecific: PluridToolbarSpecific,
+    },
+} = pluridal;
 
 
 export interface IGlobalStyles {
@@ -188,5 +195,9 @@ export {
     StyledPluridPureButton,
 
     StyledPluridInputLine,
+
+
+
+    PluridToolbarSpecific,
 };
 // #endregion exports

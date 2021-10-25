@@ -21,6 +21,7 @@
 
     // #region external
     import Page from '~renderer-components/Page';
+    import RightToolbar from '~renderer-components/RightToolbar';
 
     import { AppState } from '~renderer-services/state/store';
     import StateContext from '~renderer-services/state/context';
@@ -34,9 +35,9 @@
 
 
     // #region internal
-    // import {
-    //     StyledPluriverse,
-    // } from './styled';
+    import {
+        StyledPluriverse,
+    } from './styled';
     // #endregion internal
 // #endregion imports
 
@@ -141,11 +142,15 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
     // #region render
     return (
-        <PluridApplication
-            planes={pluridPages}
-            view={view}
-            configuration={pluridAppConfiguration}
-        />
+        <StyledPluriverse>
+            <PluridApplication
+                planes={pluridPages}
+                view={view}
+                configuration={pluridAppConfiguration}
+            />
+
+            <RightToolbar />
+        </StyledPluriverse>
     );
     // #endregion render
 }

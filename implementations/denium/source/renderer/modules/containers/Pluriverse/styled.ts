@@ -16,5 +16,6 @@ export interface IStyledPluriverse {
 }
 
 export const StyledPluriverse = styled.div<IStyledPluriverse>`
+    height: 100%;
 `;
 // #region module
