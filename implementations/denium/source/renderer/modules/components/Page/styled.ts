@@ -37,7 +37,7 @@ export const StyledPage = styled.div<IStyledPage>`
 
 
 export const StyledNoWebview = styled.div`
-    height: 650px;
+    height: 700px;
     display: grid;
     place-content: center;
 `;
