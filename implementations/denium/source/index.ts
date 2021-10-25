@@ -31,6 +31,7 @@ const createWindow = () => {
             nativeWindowOpen: true,
         },
         show: false,
+        backgroundColor: '#000000',
     });
 
     window.loadFile('index.html');
