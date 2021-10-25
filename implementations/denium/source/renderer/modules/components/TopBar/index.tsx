@@ -59,7 +59,6 @@ export interface TopBarStateProperties {
 
 export interface TopBarDispatchProperties {
     dispatchAddSpace: typeof actions.data.addSpace;
-    // dispatchAddSpacePlane: typeof actions.data.addSpacePlane;
     dispatchSetView: typeof actions.views.setView;
 }
 

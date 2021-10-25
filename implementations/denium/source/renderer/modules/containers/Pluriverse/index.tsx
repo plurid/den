@@ -26,7 +26,7 @@
     import { AppState } from '~renderer-services/state/store';
     import StateContext from '~renderer-services/state/context';
     import selectors from '~renderer-services/state/selectors';
-    // import actions from '~renderer-services/state/actions';
+    import actions from '~renderer-services/state/actions';
 
     import {
         StateSpaces,
@@ -51,9 +51,13 @@ export interface PluriverseStateProperties {
     stateGeneralTheme: Theme;
     stateInteractionTheme: Theme;
     stateSpaces: StateSpaces;
+    stateActiveSpace: string;
 }
 
 export interface PluriverseDispatchProperties {
+    dispatchAddSpace: typeof actions.data.addSpace;
+    dispatchAddSpacePlane: typeof actions.data.addSpacePlane;
+    dispatchSetView: typeof actions.views.setView;
 }
 
 export type PluriverseProperties =
@@ -71,11 +75,35 @@ const Pluriverse: React.FC<PluriverseProperties> = (
         stateGeneralTheme,
         // stateInteractionTheme,
         stateSpaces,
+        stateActiveSpace,
         // #endregion state
+
+        // #region dispatch
+        dispatchAddSpace,
+        dispatchAddSpacePlane,
+        dispatchSetView,
+        // #endregion dispatch
     } = properties;
 
-    const space = stateSpaces['123'];
+    const space = stateSpaces[stateActiveSpace];
     if (!space) {
+        if (Object.keys(stateSpaces).length === 0) {
+            dispatchAddSpace();
+            return (<></>);
+        }
+
+        const space = Object.values(stateSpaces)[0];
+        if (!space) {
+            return (<></>);
+        }
+
+        dispatchSetView({
+            type: 'activeSpace',
+            data: space.id,
+        });
+        dispatchAddSpacePlane({
+            spaceID: space.id,
+        });
         return (<></>);
     }
     // #endregion properties
@@ -162,12 +190,26 @@ const mapStateToProperties = (
     stateGeneralTheme: selectors.themes.getGeneralTheme(state),
     stateInteractionTheme: selectors.themes.getInteractionTheme(state),
     stateSpaces: selectors.data.getSpaces(state),
+    stateActiveSpace: selectors.views.getActiveSpace(state),
 });
 
 
 const mapDispatchToProperties = (
     dispatch: ThunkDispatch<{}, {}, AnyAction>,
 ): PluriverseDispatchProperties => ({
+    dispatchAddSpace: () => dispatch(
+        actions.data.addSpace(),
+    ),
+    dispatchAddSpacePlane: (
+        payload,
+    ) => dispatch(
+        actions.data.addSpacePlane(payload),
+    ),
+    dispatchSetView: (
+        payload,
+    ) => dispatch(
+        actions.views.setView(payload),
+    ),
 });
 
 

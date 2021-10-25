@@ -7,28 +7,8 @@
 
 
 // #region module
-const mockSpaces = {
-    '123': {
-        id: '123',
-        title: 'New Space',
-        planes: [
-            {
-                id: '1234',
-                url: 'https://www.google.com',
-            },
-            {
-                id: '5678',
-                url: 'https://plurid.com',
-            },
-        ],
-    },
-};
-
-
 export const initialState: Types.State = {
-    spaces: {
-        ...mockSpaces,
-    },
+    spaces: {},
 };
 // #endregion module
 
