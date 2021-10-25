@@ -109,7 +109,7 @@ const TopBar: React.FC<TopBarProperties> = (
             theme={plurid}
         >
             <StyledTopBarInteraction>
-                {/* {mouseOver && ( */}
+                {mouseOver && (
                     <>
                         <StyledSpaces>
                             {Object.values(stateSpaces).map((space) => {
@@ -168,7 +168,7 @@ const TopBar: React.FC<TopBarProperties> = (
                             </div>
                         </div> */}
                     </>
-                {/* )} */}
+                )}
             </StyledTopBarInteraction>
         </StyledTopBar>
     );

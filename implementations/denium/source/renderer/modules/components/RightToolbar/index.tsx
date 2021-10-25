@@ -38,7 +38,7 @@
 const buttons: ToolbarButton[] = [
     {
         type: 'add',
-        text: 'add webplane',
+        text: 'add netplane',
         icon: PluridIconAdd,
         first: true,
         last: true,
