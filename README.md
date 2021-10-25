@@ -33,7 +33,7 @@
 
 + [Metaphysics](#metaphysics)
     + [From Browsers to Relaters](#from-browsers-to-relaters)
-    + [Kill the User](#kill-the-user)
+    + [Kill the User (From Users to Owners)](#kill-the-user)
 + [Install](#install)
 + [Implementations](#implementations)
 
