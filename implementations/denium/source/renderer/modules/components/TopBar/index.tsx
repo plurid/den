@@ -18,6 +18,7 @@
 
     import {
         PluridIconAdd,
+        PluridIconSettings,
     } from '@plurid/plurid-icons-react';
     // #endregion libraries
 
@@ -38,6 +39,7 @@
     import {
         StyledTopBar,
         StyledTopBarInteraction,
+        StyledSpacesAdd,
         StyledSpaces,
         StyledSpace,
     } from './styled';
@@ -74,6 +76,7 @@ const TopBar: React.FC<TopBarProperties> = (
     // #region properties
     const {
         // #region state
+        stateGeneralTheme,
         stateSpaces,
         stateActiveSpace,
         // #endregion state
@@ -92,6 +95,11 @@ const TopBar: React.FC<TopBarProperties> = (
         mouseOver,
         setMouseOver,
     ] = useState(false);
+
+    const [
+        showSettings,
+        setShowSettings,
+    ] = useState(false);
     // #endregion state
 
 
@@ -109,41 +117,56 @@ const TopBar: React.FC<TopBarProperties> = (
             theme={plurid}
         >
             <StyledTopBarInteraction>
-                {mouseOver && (
+                {/* {mouseOver && ( */}
                     <>
-                        <StyledSpaces>
-                            {Object.values(stateSpaces).map((space) => {
-                                if (!space) {
-                                    return;
-                                }
+                        <StyledSpacesAdd>
+                            <StyledSpaces>
+                                {Object.values(stateSpaces).map((space) => {
+                                    if (!space) {
+                                        return;
+                                    }
 
-                                const {
-                                    id,
-                                    title,
-                                } = space;
+                                    const {
+                                        id,
+                                        title,
+                                    } = space;
 
-                                return (
-                                    <StyledSpace
-                                        key={`space-${id}`}
-                                        selected={id === stateActiveSpace}
-                                        onClick={() => {
-                                            dispatchSetView({
-                                                type: 'activeSpace',
-                                                data: id,
-                                            });
-                                        }}
-                                    >
-                                        {title || 'New Space'}
-                                    </StyledSpace>
-                                );
-                            })}
-                        </StyledSpaces>
+                                    return (
+                                        <StyledSpace
+                                            key={`space-${id}`}
+                                            selected={id === stateActiveSpace}
+                                            onClick={() => {
+                                                dispatchSetView({
+                                                    type: 'activeSpace',
+                                                    data: id,
+                                                });
+                                            }}
+                                        >
+                                            {title || 'New Space'}
+                                        </StyledSpace>
+                                    );
+                                })}
+                            </StyledSpaces>
 
-                        <PluridIconAdd
+                            <PluridIconAdd
+                                atClick={() => {
+                                    dispatchAddSpace();
+                                }}
+                                title="Add Space"
+                                theme={stateGeneralTheme}
+                                style={{
+                                    marginLeft: '1rem',
+                                    marginRight: '1rem',
+                                }}
+                            />
+                        </StyledSpacesAdd>
+
+                        <PluridIconSettings
+                            title="Settings"
                             atClick={() => {
-                                dispatchAddSpace();
+                                setShowSettings(show => !show);
                             }}
-                            title="Add Space"
+                            theme={stateGeneralTheme}
                             style={{
                                 marginLeft: '1rem',
                                 marginRight: '1rem',
@@ -168,7 +191,7 @@ const TopBar: React.FC<TopBarProperties> = (
                             </div>
                         </div> */}
                     </>
-                )}
+                {/* )} */}
             </StyledTopBarInteraction>
         </StyledTopBar>
     );

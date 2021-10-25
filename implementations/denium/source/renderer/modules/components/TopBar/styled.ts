@@ -30,6 +30,15 @@ export const StyledTopBarInteraction = styled.div`
     display: flex;
     align-items: center;
     margin-left: 6rem;
+    justify-content: space-between;
+`;
+
+
+export const StyledSpacesAdd = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
 `;
 
 
