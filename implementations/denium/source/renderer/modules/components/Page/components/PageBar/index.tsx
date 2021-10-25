@@ -127,9 +127,9 @@ const PageBar: React.FC<PageBarOwnProperties> = (
                 />
             </StyledPageLocation>
 
-            <div/>
+            <div />
 
-            <div/>
+            <div />
         </StyledPageBar>
     );
     // #endregion render

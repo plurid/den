@@ -36,6 +36,7 @@ export const StyledTopBarInteraction = styled.div`
 export const StyledSpaces = styled.div`
     display: flex;
     align-items: center;
+    overflow-x: auto;
 `;
 
 
@@ -49,6 +50,10 @@ export const StyledSpace = styled.div<IStyledSpace>`
 
     padding: 0.5rem;
     font-size: 0.9rem;
+    line-height: 1.6;
+    user-select: none;
+    cursor: pointer;
+    white-space: nowrap;
 
     border-bottom: ${
         ({
