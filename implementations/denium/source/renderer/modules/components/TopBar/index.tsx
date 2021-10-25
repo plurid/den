@@ -1,6 +1,7 @@
 // #region imports
     // #region libraries
     import React, {
+        useRef,
         useState,
     } from 'react';
 
@@ -19,11 +20,17 @@
     import {
         PluridIconAdd,
         PluridIconSettings,
+        PluridIconBranch,
+        PluridIconApps,
     } from '@plurid/plurid-icons-react';
     // #endregion libraries
 
 
     // #region external
+    import {
+        StyledPluridFormbutton,
+    } from '~renderer-services/styled';
+
     import { AppState } from '~renderer-services/state/store';
     import StateContext from '~renderer-services/state/context';
     import selectors from '~renderer-services/state/selectors';
@@ -42,6 +49,7 @@
         StyledSpacesAdd,
         StyledSpaces,
         StyledSpace,
+        StyledSettingsMenu,
     } from './styled';
     // #endregion internal
 // #endregion imports
@@ -90,6 +98,37 @@ const TopBar: React.FC<TopBarProperties> = (
     // #endregion properties
 
 
+    // #region references
+    const mouseInside = useRef(false);
+    // #endregion references
+
+
+    // #region handlers
+    const onMouseEnter = () => {
+        setMouseOver(true);
+        mouseInside.current = true;
+    }
+
+    const onMouseLeave = () => {
+        mouseInside.current = false;
+
+        setTimeout(() => {
+            if (!mouseInside.current) {
+                setMouseOver(false);
+                setShowSettings(false);
+            }
+        }, 700);
+    }
+
+    const onMouseMove = () => {
+        if (!mouseOver) {
+            mouseInside.current = true;
+            setMouseOver(true);
+        }
+    }
+    // #endregion handlers
+
+
     // #region state
     const [
         mouseOver,
@@ -105,95 +144,100 @@ const TopBar: React.FC<TopBarProperties> = (
 
     // #region render
     return (
-        <StyledTopBar
-            onMouseEnter={() => setMouseOver(true)}
-            onMouseLeave={() => {
-                setTimeout(() => {
-                    setMouseOver(false);
-                }, 700);
-            }}
-            onMouseMove={() => !mouseOver ? setMouseOver(true) : undefined}
-            mouseOver={mouseOver}
-            theme={plurid}
-        >
-            <StyledTopBarInteraction>
-                {/* {mouseOver && ( */}
-                    <>
-                        <StyledSpacesAdd>
-                            <StyledSpaces>
-                                {Object.values(stateSpaces).map((space) => {
-                                    if (!space) {
-                                        return;
-                                    }
+        <>
+            <StyledTopBar
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                onMouseMove={onMouseMove}
+                mouseOver={mouseOver}
+                theme={plurid}
+            >
+                <StyledTopBarInteraction>
+                    {/* {mouseOver && ( */}
+                        <>
+                            <StyledSpacesAdd>
+                                <StyledSpaces>
+                                    {Object.values(stateSpaces).map((space) => {
+                                        if (!space) {
+                                            return;
+                                        }
 
-                                    const {
-                                        id,
-                                        title,
-                                    } = space;
+                                        const {
+                                            id,
+                                            title,
+                                        } = space;
 
-                                    return (
-                                        <StyledSpace
-                                            key={`space-${id}`}
-                                            selected={id === stateActiveSpace}
-                                            onClick={() => {
-                                                dispatchSetView({
-                                                    type: 'activeSpace',
-                                                    data: id,
-                                                });
-                                            }}
-                                        >
-                                            {title || 'New Space'}
-                                        </StyledSpace>
-                                    );
-                                })}
-                            </StyledSpaces>
+                                        return (
+                                            <StyledSpace
+                                                key={`space-${id}`}
+                                                selected={id === stateActiveSpace}
+                                                onClick={() => {
+                                                    dispatchSetView({
+                                                        type: 'activeSpace',
+                                                        data: id,
+                                                    });
+                                                }}
+                                            >
+                                                {title || 'New Space'}
+                                            </StyledSpace>
+                                        );
+                                    })}
+                                </StyledSpaces>
 
-                            <PluridIconAdd
+                                <PluridIconAdd
+                                    atClick={() => {
+                                        dispatchAddSpace();
+                                    }}
+                                    // title="Add Space"
+                                    theme={stateGeneralTheme}
+                                    style={{
+                                        marginLeft: '1rem',
+                                        marginRight: '1rem',
+                                    }}
+                                />
+                            </StyledSpacesAdd>
+
+                            <PluridIconSettings
+                                // title="Settings"
                                 atClick={() => {
-                                    dispatchAddSpace();
+                                    setShowSettings(show => !show);
                                 }}
-                                title="Add Space"
                                 theme={stateGeneralTheme}
                                 style={{
                                     marginLeft: '1rem',
                                     marginRight: '1rem',
                                 }}
                             />
-                        </StyledSpacesAdd>
+                        </>
+                    {/* )} */}
+                </StyledTopBarInteraction>
+            </StyledTopBar>
 
-                        <PluridIconSettings
-                            title="Settings"
-                            atClick={() => {
-                                setShowSettings(show => !show);
-                            }}
-                            theme={stateGeneralTheme}
-                            style={{
-                                marginLeft: '1rem',
-                                marginRight: '1rem',
-                            }}
-                        />
+            {showSettings && (
+                <StyledSettingsMenu
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    onMouseMove={onMouseMove}
+                    theme={plurid}
+                >
+                    <h1>
+                        settings
+                    </h1>
 
-                        {/* <div
-                            style={{
-                                display: 'flex',
-                            }}
-                        >
-                            <div
-                                onClick={() => {
-                                    if (stateSpaces['123']) {
-                                        dispatchAddSpacePlane({
-                                            spaceID: stateSpaces['123'].id,
-                                        });
-                                    }
-                                }}
-                            >
-                                add space plane
-                            </div>
-                        </div> */}
-                    </>
-                {/* )} */}
-            </StyledTopBarInteraction>
-        </StyledTopBar>
+                    <StyledPluridFormbutton
+                        text="history"
+                        Icon={PluridIconBranch}
+                        atClick={() => {}}
+                    />
+
+                    <StyledPluridFormbutton
+                        text="netmarks"
+                        Icon={PluridIconApps}
+                        atClick={() => {}}
+                    />
+                </StyledSettingsMenu>
+            )}
+        </>
     );
     // #endregion render
 }

@@ -9,7 +9,6 @@
 // #region module
 export const StyledTopBar: any = styled.div`
     -webkit-app-region: drag;
-
     position: absolute;
     top: 0;
     left: 0;
@@ -75,5 +74,27 @@ export const StyledSpace = styled.div<IStyledSpace>`
             return '1px solid transparent';
         }
     };
+`;
+
+
+
+export const StyledSettingsMenu = styled.div`
+    -webkit-app-region: no-drag;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    width: 270px;
+    z-index: 9999;
+
+    background-color: ${(props: any) => {
+        return props.theme.backgroundColorDark;
+    }};
+
+    h1 {
+        user-select: none;
+        font-size: 1rem;
+        padding: 0.5rem;
+        text-align: right;
+    }
 `;
 // #endregion module

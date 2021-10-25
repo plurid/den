@@ -140,8 +140,7 @@ const StyledPluridFormLeftRight = styled(PluridFormLeftRight)`
 
 
 const StyledPluridFormbutton = styled(PluridFormbutton)`
-    padding: 0;
-    margin-bottom: 1.5rem;
+    padding: 0.7rem;
 `;
 
 
