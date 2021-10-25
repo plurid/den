@@ -43,6 +43,25 @@ const protocolless = (
     return cleanURL;
 }
 
+const getProtocol = (
+    url: string,
+) => {
+    const protocols = [
+        'https',
+        'http',
+        'den',
+        'gemini',
+    ];
+
+    for (const protocol of protocols) {
+        if (url.startsWith(protocol)) {
+            return protocol;
+        }
+    }
+
+    return '';
+}
+
 
 export interface PageBarOwnProperties {
     url: string;
@@ -63,6 +82,11 @@ const PageBar: React.FC<PageBarOwnProperties> = (
 
 
     // #region state
+    const [
+        protocol,
+        setProtocol,
+    ] = useState(getProtocol(url));
+
     const [
         mouseOver,
         setMouseOver,
@@ -86,10 +110,12 @@ const PageBar: React.FC<PageBarOwnProperties> = (
 
             <ProtocolSelector
                 show={mouseOver}
-                protocol="https"
+                protocol={protocol}
                 theme={plurid}
 
-                changeProtocol={(protocol) => {}}
+                changeProtocol={(protocol) => {
+                    setProtocol(protocol);
+                }}
             />
 
             <StyledPageLocation>

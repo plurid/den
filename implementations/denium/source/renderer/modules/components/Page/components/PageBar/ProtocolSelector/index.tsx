@@ -72,7 +72,7 @@ const ProtocolSelector: React.FC<ProtocolSelectorProperties> = (
         <StyledProtocolSelector
             theme={theme}
         >
-            {show && (
+            {show && protocol && (
                 <PluridDropdown
                     selected={protocol}
                     selectables={protocols}
