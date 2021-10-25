@@ -17,7 +17,7 @@
         "test": "jest ./app/test/unit/",
         "watch": "yarn clean && webpack --watch --config ./scripts/webpack.config.js --env dev",
         "develop": "yarn clean && webpack --config ./scripts/webpack.config.js",
-        "build": "yarn clean && webpack --config ./scripts/webpack.config.js -p --env prod --progress --profile --colors",
+        "build": "yarn clean && webpack --config ./scripts/webpack.config.js --env prod --progress",
         "electron": "electron ./build/",
         "electron.run": "yarn develop && yarn electron",
         "electron.linux": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=linux --arch=x64 --icon=./build/assets/meta/den.png --prune=true --out=den",
