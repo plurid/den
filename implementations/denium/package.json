@@ -18,8 +18,14 @@
         "watch": "yarn clean && webpack --watch --config ./scripts/webpack.config.js --env dev",
         "develop": "yarn clean && webpack --config ./scripts/webpack.config.js",
         "build": "yarn clean && webpack --config ./scripts/webpack.config.js --env prod --progress",
-        "electron": "electron ./build/",
-        "electron.run": "yarn develop && yarn electron",
+        "build.clean": "rm -rf `find ./build/ -type d -name __tests__` && rm -rf `find ./build/ -type d -name .DS_STORE`",
+        "build.production": "NODE_ENV=production yarn build && yarn build.clean",
+
+        "electron.run": "electron ./build/",
+        "electron.develop": "yarn develop && yarn electron.run",
+        "electron.builder": "electron-builder build --publish never",
+        "package": "yarn build.production && yarn electron.builder",
+
         "electron.linux": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=linux --arch=x64 --icon=./build/assets/meta/den.png --prune=true --out=den",
         "electron.mac": "yarn build && electron-packager ./build/ --overwrite --platform=darwin --arch=x64 --icon=./build/assets/meta/den.icns --prune=true --out=den",
         "electron.windows": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/den.ico --prune=true --out=den --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"den\""
