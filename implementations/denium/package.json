@@ -1,9 +1,9 @@
 {
     "name": "@plurid/den",
-    "version": "0.0.1",
+    "version": "0.0.0-0",
     "description": "Plurid-powered web browser based on Electron/Chromium.",
     "author": "ly3xqhl8g9 <ly3xqhl8g9@plurid.com> (https://plurid.com)",
-    "license": "MIT",
+    "license": "SEE LICENSE IN LICENSE",
     "homepage": "https://den.plurid.com",
     "repository": {
         "type": "git",
