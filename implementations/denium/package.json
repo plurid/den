@@ -26,9 +26,9 @@
         "electron.builder": "electron-builder build --publish never",
         "package": "yarn build.production && yarn electron.builder",
 
-        "electron.linux": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=linux --arch=x64 --icon=./build/assets/meta/den.png --prune=true --out=den",
-        "electron.mac": "yarn build && electron-packager ./build/ --overwrite --platform=darwin --arch=x64 --icon=./build/assets/meta/den.icns --prune=true --out=den",
-        "electron.windows": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/den.ico --prune=true --out=den --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"den\""
+        "electron.linux": "yarn build.production && electron-packager ./build/ den --overwrite --asar=true --platform=linux --arch=x64 --icon=./build/assets/meta/den.png --prune=true --out=den",
+        "electron.mac": "yarn build.production && electron-packager ./build/ --overwrite --platform=darwin --arch=x64 --icon=./build/assets/meta/den.icns --prune=true --out=den",
+        "electron.windows": "yarn build.production && electron-packager ./build/ den --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/den.ico --prune=true --out=den --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"den\""
     },
     "dependencies": {
         "@plurid/elementql": "^0.0.0-1",
