@@ -25,6 +25,10 @@
     import Page from '~renderer-components/Page';
     import RightToolbar from '~renderer-components/RightToolbar';
 
+    import {
+        PluridLinkButton,
+    } from '~renderer-services/styled';
+
     import { AppState } from '~renderer-services/state/store';
     import StateContext from '~renderer-services/state/context';
     import selectors from '~renderer-services/state/selectors';
@@ -39,6 +43,7 @@
     // #region internal
     import {
         StyledPluriverse,
+        StyledPluriverseEmpty,
     } from './styled';
     // #endregion internal
 // #endregion imports
@@ -187,11 +192,27 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
     return (
         <StyledPluriverse>
-            <PluridApplication
-                planes={pluridPages}
-                view={view}
-                configuration={pluridAppConfiguration}
-            />
+            {view.length === 0 && (
+                <StyledPluriverseEmpty>
+                    <PluridLinkButton
+                        text="add a netplane"
+                        theme={stateGeneralTheme}
+                        atClick={() => {
+                            dispatchAddSpacePlane({
+                                spaceID: stateActiveSpace,
+                            });
+                        }}
+                    />
+                </StyledPluriverseEmpty>
+            )}
+
+            {view.length > 0 && (
+                <PluridApplication
+                    planes={pluridPages}
+                    view={view}
+                    configuration={pluridAppConfiguration}
+                />
+            )}
 
             <RightToolbar />
         </StyledPluriverse>
