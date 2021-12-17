@@ -13,6 +13,7 @@
     // #region external
     import {
         PluridTextline,
+        PluridCopyableLine,
     } from '~renderer-services/styled';
     // #endregion external
 
@@ -21,6 +22,7 @@
     import {
         StyledPageBar,
         StyledPageLocation,
+        StyledPageControls,
     } from './styled';
 
     import ProtocolSelector from './ProtocolSelector';
@@ -127,7 +129,16 @@ const PageBar: React.FC<PageBarOwnProperties> = (
                 />
             </StyledPageLocation>
 
-            <div />
+            <StyledPageControls>
+                {mouseOver && url && (
+                    <PluridCopyableLine
+                        data={url}
+                        viewData=" "
+                        copyMessage=" "
+                        theme={plurid}
+                    />
+                )}
+            </StyledPageControls>
 
             <div />
         </StyledPageBar>

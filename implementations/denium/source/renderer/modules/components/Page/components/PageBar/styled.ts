@@ -23,4 +23,11 @@ export const StyledPageLocation = styled.div`
     display: flex;
     align-items: center;
 `;
+
+
+export const StyledPageControls = styled.div`
+    display: flex;
+    align-items: center;
+    padding-left: 0.7rem;
+`;
 // #endregion module

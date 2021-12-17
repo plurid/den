@@ -42,6 +42,9 @@ const {
     typography: {
         Heading: PluridHeading,
     },
+    varia: {
+        CopyableLine: PluridCopyableLine,
+    },
 } = universal;
 
 
@@ -187,6 +190,8 @@ export {
     PluridTextline,
 
     PluridHeading,
+
+    PluridCopyableLine,
 
     StyledH2Heading,
     StyledH3Heading,
